@@ -3,7 +3,7 @@ package com.example.neostore
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-class HomeScreen_Activity : AppCompatActivity() {
+class HomeScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
