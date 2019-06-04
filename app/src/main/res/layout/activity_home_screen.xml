@@ -7,12 +7,27 @@
         android:layout_height="match_parent"
         tools:context=".HomeScreenActivity">
 
-    <Toolbar
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/holo_red_dark"
+            app:logo="@drawable/ic_menu"
     >
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NeoSTORE"
+               style="@style/textView_bg"
+                android:textColor="@color/white"
+                android:layout_marginLeft="124dp"
 
-    </Toolbar>
+        />
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+
 
 </RelativeLayout>
