@@ -10,21 +10,18 @@
         android:padding="30dp"
         android:background="#b71c1c">
 
-<TextView android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+        <TextView
+        style="@style/login_text_bg"
           android:text="@string/neostore"
           android:gravity="center"
           android:textSize="@dimen/extra_large_font_size"
-          android:textStyle="bold"
           android:textColor="@android:color/white"
-          android:layout_marginTop="48dp"/>
+          />
 
 
 
-      <EditText
+        <EditText
               android:id="@+id/etUsername"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
               android:hint="@string/username"
               android:inputType="text"
               style="@style/edittText_bg"
@@ -33,46 +30,34 @@
 
 
 
-      <EditText
+        <EditText
               android:id="@+id/etPassword"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
               android:hint="@string/password"
               android:inputType="text"
               style="@style/edittText_bg"
               android:drawableLeft="@drawable/lock_symbol"
               />
 
-<Button
+       <Button
         android:id="@+id/etButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        style="@style/button_bg"
         android:text="LOGIN"
-        android:textSize="25sp"
-        android:textColor="#b71c1c"
         android:background="@drawable/button_rounded"
-/>
-      <TextView android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+       />
+
+        <TextView
+               style="@style/login_text_bg"
                 android:text="Forgot Password?"
                 android:gravity="center"
-                android:textSize="24sp"
-                android:textStyle="bold"
                 android:textColor="@android:color/white"
-                android:layout_marginTop="28dp"/>
+                />
 
-      <TextView android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="DON'T HAVE AN ACCOUNT?"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:layout_marginTop="96dp"
-                android:drawableRight="@drawable/plus_button"
-
-
-     />
+        <TextView
+              style="@style/login_text_bg"
+              android:text="DON'T HAVE AN ACCOUNT?"
+              android:textColor="@android:color/white"
+              android:drawableRight="@drawable/plus_button"
+        />
 
 
 

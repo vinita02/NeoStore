@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/chair" android:title="Chair"></item>
-    <item android:id="@+id/table" android:title="Table"></item>
-    <item android:id="@+id/sofa" android:title="Sofa"></item>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/chair"
+          android:title="Chair"
+          android:icon="@drawable/ic_search_black"
+          app:showAsAction="always"/>
 
 </menu>
