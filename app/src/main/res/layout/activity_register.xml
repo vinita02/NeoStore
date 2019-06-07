@@ -16,16 +16,10 @@
         android:orientation="vertical"
         android:layout_margin="16dp">
 
-
-
-
-    <TextView
-              android:text="@string/register"
-              style="@style/textView_bg"
-              android:padding="@dimen/std_padding"
-              android:textColor="@android:color/white"/>
+        <include layout="@layout/toolbar"/>
 
     <TextView
+              android:id="@+id/tvNeoStore"
               android:text="@string/neostore"
               style="@style/textView_bg"
               android:textColor="@android:color/white"
@@ -76,6 +70,7 @@
     >
 
         <TextView
+                android:id="@+id/tvGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gender"
@@ -129,7 +124,7 @@
     />
 
     <Button
-            android:id="@+id/RegisterButton"
+            android:id="@+id/btnRegister"
             style="@style/button_bg"
             android:text="REGISTER"
             android:background="@drawable/button_rounded"

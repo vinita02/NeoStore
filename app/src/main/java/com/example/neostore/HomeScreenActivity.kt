@@ -18,8 +18,7 @@ class HomeScreenActivity : BaseActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       setContentView(getLayout())
-        setSupportActionBar(toolbar)
+        setToolbar("Home Screen")
     }
 
         override fun onCreateOptionsMenu(menu: Menu?): Boolean {

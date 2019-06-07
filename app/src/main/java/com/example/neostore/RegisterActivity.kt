@@ -13,9 +13,10 @@ class RegisterActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayout())
 
-        RegisterButton.setOnClickListener() {
+        // SetToolbar
+        setToolbar("Register")
+        btnRegister.setOnClickListener() {
             val intent = Intent(this@RegisterActivity,HomeScreenActivity::class.java)
             startActivity(intent)
         }
