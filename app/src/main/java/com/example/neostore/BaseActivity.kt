@@ -18,6 +18,12 @@ abstract class BaseActivity : AppCompatActivity() {
     fun setToolbar(title : String) {
         setSupportActionBar(toolbar)
         tvTitle.setText(title)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 }

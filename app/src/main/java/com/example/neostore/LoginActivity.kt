@@ -25,5 +25,6 @@ class LoginActivity : BaseActivity() {
             val intent = Intent( this@LoginActivity,ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
+
     }
 }
