@@ -1,8 +1,8 @@
-package com.example.neostore
+package com.example.neostore.Activity
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.neostore.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 class ForgotPasswordActivity : BaseActivity() {
@@ -15,7 +15,7 @@ class ForgotPasswordActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         btnLogin.setOnClickListener() {
-            val intent = Intent(this@ForgotPasswordActivity,RegisterActivity::class.java)
+            val intent = Intent(this@ForgotPasswordActivity, RegisterActivity::class.java)
             startActivity(intent)
         }
     }

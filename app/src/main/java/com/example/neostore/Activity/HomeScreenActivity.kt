@@ -1,14 +1,11 @@
-package com.example.neostore
+package com.example.neostore.Activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.view.SupportActionModeWrapper
-import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_home_screen.*
+import com.example.neostore.R
 
 class HomeScreenActivity : BaseActivity(){
 
@@ -31,7 +28,7 @@ class HomeScreenActivity : BaseActivity(){
 
         when(item?.itemId)
         {
-            R.id.chair->{
+            R.id.chair ->{
           Toast.makeText(this,"Item 1st selected",Toast.LENGTH_SHORT).show()
                 return super.onContextItemSelected(item)
         }
