@@ -25,7 +25,8 @@ interface Api {
         @Field(value = "password")password:String,
         @Field(value = "confirm_password")confirm_password:String,
         @Field(value = "gender")gender:String,
-        @Field(value = "phone_no")phone_no:Int
+        @Field(value = "phone_no")phone_no:Long
+
 
     ):Call<LoginRes>
 }

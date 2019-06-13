@@ -45,7 +45,7 @@ class LoginActivity : BaseActivity() {
                 .userLogin(email, password)
                 .enqueue(object : retrofit2.Callback<LoginRes> {
                     override fun onFailure(call: Call<LoginRes>, t: Throwable) {
-                        Toast.makeText(this@LoginActivity, "Failure", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@LoginActivity, "Fail", Toast.LENGTH_LONG).show()
 
                     }
 
@@ -53,14 +53,16 @@ class LoginActivity : BaseActivity() {
 
                         if(response.body() != null)
                         {
-                           Toast.makeText(this@LoginActivity,"Successful",Toast.LENGTH_LONG).show()
+
+                           show("Successful")
                         }
                         else
                         {
-                            Toast.makeText(this@LoginActivity,"fail",Toast.LENGTH_LONG).show()
+
+                            show("Fail")
                         }
-                        val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-                        startActivity(intent)
+                        val intent = Intent(this@LoginActivity, HomeScreenActivity::class.java)
+                       startActivity(intent)
                     }
 
                 })
