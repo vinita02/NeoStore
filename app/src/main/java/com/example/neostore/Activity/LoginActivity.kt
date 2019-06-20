@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.neostore.BasePresenter
 import com.example.neostore.Contract.LoginContract
+import com.example.neostore.Model.LoginRes
 import com.example.neostore.Presenter.LoginPresenter
 import com.example.neostore.R
 import kotlinx.android.synthetic.main.activity_login.*
@@ -32,7 +33,7 @@ class LoginActivity : BaseActivity(),LoginContract.View {
         etPassword.requestFocus()
     }
 
-    override fun loginSuccess() {
+    override fun loginSuccess(response: LoginRes?) {
         show("Successful")
         val intent = Intent(this@LoginActivity, HomeScreenActivity::class.java)
         startActivity(intent)
@@ -66,7 +67,6 @@ class LoginActivity : BaseActivity(),LoginContract.View {
             val password = etPassword.text.toString().trim()
 
             var check =  presenter.validation(email,password)
-
 
             if(check){
                 presenter.getResult(email,password)

@@ -10,13 +10,20 @@ import android.support.v4.widget.DrawerLayout
 import android.support.design.widget.NavigationView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
+import com.example.neostore.BasePresenter
+import com.example.neostore.Contract.LoginContract
+import com.example.neostore.Model.LoginRes
+import com.example.neostore.Presenter.LoginPresenter
 import com.example.neostore.R
 
-class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener,LoginContract.View{
+    val presenter = LoginPresenter(this)
+    override val getPresenter: BasePresenter
+        get() = presenter
+
     override fun getLayout(): Int {
         return R.layout.activity_navigation
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,6 +107,29 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+    override fun loginSuccess(response: LoginRes?) {
+    }
+
+    override fun loginFail() {
+    }
+
+    override fun showEmailError() {
+    }
+
+    override fun showPasswordError() {
+    }
+
+    override fun showError(message: String) {
+    }
+
+    override fun showLoading() {
+    }
+
+    override fun hideLoading() {
+    }
+
+    override fun logout() {
     }
 
 }

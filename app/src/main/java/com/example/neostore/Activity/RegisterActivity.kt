@@ -1,40 +1,101 @@
 package com.example.neostore.Activity
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.neostore.Api.ApiManger
+import com.example.neostore.BasePresenter
+import com.example.neostore.Contract.RegisterContract
 import com.example.neostore.Model.LoginRes
+import com.example.neostore.Presenter.LoginPresenter
+import com.example.neostore.Presenter.RegisterPresenter
 import com.example.neostore.R
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.activity_register.etEmail
 import kotlinx.android.synthetic.main.activity_register.etPassword
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.arch.lifecycle.Observer as LifecycleObserver
+import kotlinx.android.synthetic.main.activity_register.etEmail as etEmail1
 
-class RegisterActivity : BaseActivity() {
+class RegisterActivity : BaseActivity(),RegisterContract.View {
 
-         var gebderCheck:String?= null
+
+    val presenter = RegisterPresenter(this)
+
+    override val getPresenter: BasePresenter
+        get() = presenter
+
+
+    var gebderCheck:String?= null
 
     override fun getLayout(): Int {
         return R.layout.activity_register
+    }
+    override fun loginSuccess() {
+        show("Successful")
+        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+        startActivity(intent)
+    }
+    override fun loginFail() {
+        show("Fail Login")
+    }
+
+    override fun showEmailError() {
+        etEmail.error = "Email Required"
+        etEmail.requestFocus()
+    }
+
+    override fun showPasswordError() {
+        etPassword.error = "Password Required"
+        etPassword.requestFocus()
+    }
+
+    override fun showFirstNameError() {
+        etFirstName.error="Enter First Name"
+        etFirstName.requestFocus()
+    }
+
+    override fun showLastNameError() {
+        etLastName.error="Enter Last Name"
+        etLastName.requestFocus()
+    }
+
+    override fun showConformPasswordError() {
+        etConformPassword.error="Enter Conform Password"
+        etConformPassword.requestFocus()
+    }
+
+    override fun showPhoneNoError() {
+        etPhoneNo.error="enter Phone Number"
+    }
+
+    override fun showError(message: String) {
+    }
+
+    override fun showLoading() {
+    }
+
+    override fun hideLoading() {
+    }
+
+    override fun logout() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayout())
+
         // SetToolbar
         setToolbar("Register")
 
+        // validation for radio group
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
             gebderCheck = if( checkedId == R.id.rbMale) "Male" else "female"
         }
 
-
-
         btnRegister.setOnClickListener() {
-
 
             val first_name = etFirstName.text.toString()
             val last_name = etLastName.text.toString()
@@ -43,9 +104,19 @@ class RegisterActivity : BaseActivity() {
             val confirm_password = etConformPassword.text.toString()
             val phone_no = etPhoneNo.text.toString()
 
+         val checkRegister =  presenter.validation(first_name,last_name,email,password,
+             confirm_password,phone_no)
 
-             validation(first_name,last_name,email,password,confirm_password,phone_no)
-            ApiManger.create()
+            if(checkRegister) {
+                presenter.getResult(first_name,last_name,email,password,confirm_password, this.gebderCheck!!,phone_no)
+            }
+
+
+
+
+             //validation(first_name,last_name,email,password,confirm_password,phone_no)
+
+            /*ApiManger.create()
                 .userRegister(first_name,last_name,email,password,confirm_password,gebderCheck.toString(),phone_no.toLong())
                 .enqueue(object : Callback<LoginRes>{
                     override fun onFailure(call: Call<LoginRes>, t: Throwable) {
@@ -65,12 +136,12 @@ class RegisterActivity : BaseActivity() {
 
                         }
                     }
-                })
+                })*/
         }
 
     }
 
-    open fun validation(
+   /* open fun validation(
         first_name: String,
         last_name: String,
         email: String,
@@ -114,5 +185,5 @@ class RegisterActivity : BaseActivity() {
             return false
         }
            return true
-    }
+    }*/
 }

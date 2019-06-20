@@ -8,7 +8,6 @@ import retrofit2.create
 
 class ApiManger {
 
-
     companion object {
 
         val BASE_URL = "http://staging.php-dev.in:8844/trainingapp/"

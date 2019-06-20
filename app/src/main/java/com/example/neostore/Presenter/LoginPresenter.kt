@@ -1,25 +1,21 @@
 package com.example.neostore.Presenter
 
-import com.example.neostore.Api.Api
-import com.example.neostore.Api.ApiManger
 import com.example.neostore.Contract.LoginContract
 import com.example.neostore.Model.LoginRes
-import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.neostore.Net.APICallback
+import com.example.neostore.Net.APIManager
 
 class LoginPresenter(view:LoginContract.View):LoginContract.Presenter
 
 {
-    override fun onDestroy() {
-        mView = null
-    }
-
     var mView :LoginContract.View?  = null
 
     init {
         mView = view
+    }
+
+    override fun onDestroy() {
+        mView = null
     }
 
     override fun onStart() {
@@ -44,21 +40,17 @@ class LoginPresenter(view:LoginContract.View):LoginContract.Presenter
 
     fun getResult(email: String,password: String)
     {
-        ApiManger.create()
-            .userLogin(email, password)
-            .enqueue(object : Callback<LoginRes>{
-                override fun onFailure(call: Call<LoginRes>, t: Throwable) {
-                    mView?.loginFail()
+        APIManager().login(email, password, object : APICallback<LoginRes>()
+        {
+            override fun onSuccess(code: Int?, response: LoginRes?) {
+                when(code){
+                    200 -> {mView?.loginSuccess(response)}
+                    401 -> {mView?.loginFail()}
                 }
 
-                override fun onResponse(call: Call<LoginRes>, response: Response<LoginRes>) {
-                    mView?.loginSuccess()
-                 }
-
+            }
             })
+        }
+
     }
 
-
-
-
-}
