@@ -1,9 +1,15 @@
 package com.example.neostore.Presenter
 
+import com.example.neostore.Api.Api
+import com.example.neostore.Api.ApiManger
 import com.example.neostore.Contract.LoginContract
 import com.example.neostore.Model.LoginRes
 import com.example.neostore.Net.APICallback
 import com.example.neostore.Net.APIManager
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 
 class LoginPresenter(view:LoginContract.View):LoginContract.Presenter
 
@@ -37,20 +43,16 @@ class LoginPresenter(view:LoginContract.View):LoginContract.Presenter
         return true
     }
 
-
     fun getResult(email: String,password: String)
     {
-        APIManager().login(email, password, object : APICallback<LoginRes>()
-        {
-            override fun onSuccess(code: Int?, response: LoginRes?) {
-                when(code){
-                    200 -> {mView?.loginSuccess(response)}
-                    401 -> {mView?.loginFail()}
-                }
-
-            }
-            })
-        }
+        val apiClient =  ApiManger.create().userLogin(email,password)
+        apiClient.observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe({
+                t:LoginRes -> mView?.loginSuccess(t)},
+                {t: Throwable -> mView?.loginFail()}
+            )
+    }
 
     }
 

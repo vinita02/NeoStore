@@ -1,6 +1,7 @@
 package com.example.neostore.Api
 
 import com.example.neostore.Model.LoginRes
+import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -13,7 +14,7 @@ interface Api {
     fun userLogin(
     @Field(value = "email")email:String,
     @Field(value = "password")password:String
-    ):Call<LoginRes>
+    ):Observable<LoginRes>
 
 
     @FormUrlEncoded
