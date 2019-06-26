@@ -1,9 +1,11 @@
 package com.example.neostore.Activity
 
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import com.example.neostore.BasePresenter
 import com.example.neostore.Contract.LoginContract
@@ -12,8 +14,11 @@ import com.example.neostore.Model.LoginRes
 import com.example.neostore.Presenter.LoginPresenter
 import com.example.neostore.Presenter.RegisterPresenter
 import com.example.neostore.R
+import com.example.neostore.ViewPageAdapter
 
 class HomeScreenActivity() : BaseActivity(),LoginContract.View{
+
+    lateinit var viewPager: ViewPager
 
     val presenter = LoginPresenter(this)
     override val getPresenter: BasePresenter
@@ -27,6 +32,10 @@ class HomeScreenActivity() : BaseActivity(),LoginContract.View{
         super.onCreate(savedInstanceState)
         setToolbar("Home Screen")
         //getPresenter.onStart()
+
+        viewPager = findViewById<View>(R.id.viewPager) as ViewPager
+        val adapter = ViewPageAdapter(this)
+        viewPager.adapter = adapter
     }
 
         override fun onCreateOptionsMenu(menu: Menu?): Boolean {
