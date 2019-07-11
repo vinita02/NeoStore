@@ -39,6 +39,15 @@
         <item name="android:layout_marginTop">24dp</item>
     </style>
 
+    <style name="style_itemtext">
+        <item name="android:textSize">20sp</item>
+
+    </style>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#7F7F7F</item>
+        <item name="colorControlActivated">#FFBA00</item>
+    </style>
+
     <style name="login_text_bg">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
