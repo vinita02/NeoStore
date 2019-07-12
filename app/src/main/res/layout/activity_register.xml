@@ -5,8 +5,7 @@
             android:layout_height="match_parent"
             android:background="@android:color/holo_red_dark">
 
-
-<LinearLayout
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -19,56 +18,53 @@
        <include layout="@layout/toolbar"></include>
 
     <TextView
-              android:id="@+id/tvNeoStore"
-              android:text="@string/neostore"
-              style="@style/textView_bg"
-              android:textColor="@android:color/white"
-              android:layout_marginTop="24dp"/>
+            android:id="@+id/tvNeoStore"
+            android:text="@string/neostore"
+            style="@style/textView_bg"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="24dp"/>
+
     <EditText
             android:id="@+id/etFirstName"
             android:hint="@string/first_name"
             android:inputType="text"
             style="@style/edittText_bg"
-            android:drawableLeft="@drawable/user_symbol"
-    />
+            android:drawableLeft="@drawable/user_symbol"/>
 
     <EditText
             android:id="@+id/etLastName"
             android:hint="@string/last_name"
             android:inputType="text"
             style="@style/edittText_bg"
-            android:drawableLeft="@drawable/user_symbol"
-    />
+            android:drawableLeft="@drawable/user_symbol"/>
 
     <EditText
             android:id="@+id/etEmail"
             android:hint="@string/Email"
             android:inputType="textEmailAddress"
             style="@style/edittText_bg"
-            android:drawableLeft="@drawable/email_symbol"
-    />
+            android:drawableLeft="@drawable/email_symbol"/>
+
     <EditText
             android:id="@+id/etPassword"
             android:hint="@string/password"
             android:inputType="textPassword"
             style="@style/edittText_bg"
-            android:drawableLeft="@drawable/lock_symbol"
-    />
+            android:drawableLeft="@drawable/lock_symbol"/>
+
     <EditText
             android:id="@+id/etConformPassword"
             android:hint="@string/confirm_password"
             android:inputType="textPassword"
             style="@style/edittText_bg"
-            android:drawableLeft="@drawable/lock_symbol"
-    />
+            android:drawableLeft="@drawable/lock_symbol"/>
 
     <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="24dp"
-    >
+            android:layout_marginTop="24dp">
 
         <TextView
                 android:id="@+id/tvGender"
@@ -77,8 +73,7 @@
                 android:text="@string/gender"
                 android:textColor="@color/white"
                 style="@style/textView_bg"
-                android:layout_gravity="center"
-        />
+                android:layout_gravity="center"/>
 
         <RadioButton
                 android:id="@+id/rbMale"
@@ -88,9 +83,7 @@
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_marginLeft="10dp"
-                android:buttonTint="@color/white"
-
-        />
+                android:buttonTint="@color/white"/>
 
         <RadioButton
                 android:id="@+id/rbFemale"
@@ -100,10 +93,7 @@
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_marginLeft="10dp"
-                android:buttonTint="@color/white"
-
-                />
-
+                android:buttonTint="@color/white"/>
     </RadioGroup>
 
     <EditText
@@ -111,9 +101,7 @@
             android:hint="@string/phone_number"
             android:inputType="number"
             style="@style/edittText_bg"
-            android:drawableLeft="@drawable/phone_android"
-
-    />
+            android:drawableLeft="@drawable/phone_android"/>
 
     <CheckBox
             android:id="@+id/checkBox"
@@ -125,15 +113,14 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
-            android:buttonTint="@color/white"
-    />
+            android:buttonTint="@color/white"/>
 
     <Button
             android:id="@+id/btnRegister"
             style="@style/button_bg"
             android:text="REGISTER"
-            android:background="@drawable/button_rounded"
-    />
+            android:background="@drawable/button_rounded"/>
+
 </LinearLayout>
 
 </ScrollView>

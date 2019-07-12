@@ -36,10 +36,11 @@ class ProductPresenter(view: ProductContract.View, context: Context):
                     if (it != null) {
 
                         myadapter = ProductAdapter(it.data1, context)
+                        Log.d("Tag","message:"+it.data1!!.size)
 
                         mRecyclerView.adapter = myadapter
 
-                        mView?.getProduct(it.data1!![1].name!!)
+//                        mView?.getProduct(it.data1!![1].name!!)
 
                     }
                 },

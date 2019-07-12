@@ -8,6 +8,7 @@ import com.example.neostore.R
 import com.example.neostore.base.BaseActivity
 import com.example.neostore.base.BasePresenter
 import kotlinx.android.synthetic.main.activity_product_list.*
+import kotlinx.android.synthetic.main.activity_seater_dining_table.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class ProductListActivity : BaseActivity(), ProductContract.View {

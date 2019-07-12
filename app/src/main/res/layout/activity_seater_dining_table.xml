@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".SeaterDiningTableActivity">
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/tvTitle"
+                    android:text="6 Seater Dining Table for family"
+                    android:textStyle="bold"
+                    style="@style/seater_text"/>
+
+            <TextView
+                    android:id="@+id/tvSubTitle"
+                    android:layout_below="@id/tvTitle"
+                    android:textStyle="normal"
+                    style="@style/seater_text"
+                    android:text="Category - Tables"/>
+
+            <TextView
+                    android:id="@+id/tvSmail"
+                    android:layout_below="@id/tvSubTitle"
+                    android:textStyle="normal"
+                    style="@style/seater_text"
+                    android:text="Future Furniture Center"/>
+
+            <RatingBar
+                    android:id="@+id/ratBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tvSmail"
+                    android:layout_below="@id/tvSubTitle"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="50dp"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:theme="@style/RatingBar"/>
+
+            <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_below="@id/ratBar"
+                    style="@style/seater_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:text="Rs. 27,390"/>
+
+            <ImageView
+                    android:paddingTop="10dp"
+                    android:id="@+id/imageView"
+                    android:layout_below="@id/tvPrice"
+                    android:layout_width="280dp"
+                    android:layout_height="200dp"
+                    android:padding="4dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#7F7F7F"/>
+
+            <TextView
+                    android:id="@+id/tvParegraph"
+                    android:layout_below="@id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#FFBA00"/>
+
+            <Button
+                    android:id="@+id/btnBusyNow"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvParegraph"
+                    android:layout_marginLeft="30dp"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="20dp"
+                    android:text="Busy Now"/>
+
+            <Button
+                    android:id="@+id/btnRate"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvParegraph"
+                    android:layout_toRightOf="@+id/btnBusyNow"
+                    android:layout_marginLeft="100dp"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="20dp"
+                    android:text="Rate"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

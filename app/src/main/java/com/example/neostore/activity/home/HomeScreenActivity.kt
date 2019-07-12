@@ -38,11 +38,6 @@ class HomeScreenActivity : BaseActivity(), LoginContract.View {
         super.onCreate(savedInstanceState)
         /////////////////  This is use to Set Toolbar,Add Back Button and Hide Menu button
         setToolbar("NeoSTORE")
-        // Use For Back Buton
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        // This line use for to hid menu button from activity
-        ivMenu.setVisibility(View.GONE)
 
         // This is use to open navigation drawer
         ivMenu.setOnClickListener {
@@ -51,22 +46,22 @@ class HomeScreenActivity : BaseActivity(), LoginContract.View {
 
         ///////intent////////////////////////
         ivTables.setOnClickListener {
-            decide("1")
+            navigatToProductList("1")
         }
         ivSofa.setOnClickListener {
-            decide("2")
+            navigatToProductList("2")
         }
         ivChairs.setOnClickListener {
-            decide("3")
+            navigatToProductList("3")
         }
         ivCupbords.setOnClickListener {
-            decide("4")
+            navigatToProductList("4")
         }
         // call init method
         init()
     }
 
-    fun decide(productId:String){
+    fun navigatToProductList(productId:String){
         val bundle=Bundle()
         bundle.putString("product_id",productId)
         val intent = Intent(this@HomeScreenActivity, ProductListActivity::class.java)
