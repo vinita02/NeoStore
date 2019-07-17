@@ -18,8 +18,7 @@ class ProductListActivity : BaseActivity(), ProductContract.View {
     }
 
     val presenter = ProductPresenter(this, this)
-    override val getPresenter: BasePresenter
-        get() =  presenter
+
 
     override fun getProduct(message: String) {
     }

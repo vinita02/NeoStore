@@ -2,33 +2,55 @@ package com.example.neostore.activity.home
 
 
 //import com.viewpagerindicator.CirclePageIndicator
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 //import androidx.core.view.ViewPager
 import android.view.*
 import android.widget.Toast
+import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import com.example.neostore.R
+import com.example.neostore.activity.login.LoginActivity
 import com.example.neostore.base.BaseActivity
 import com.example.neostore.activity.product.ProductListActivity
 import com.example.neostore.base.BasePresenter
 import com.example.neostore.activity.login.LoginContract
 import com.example.neostore.activity.login.model.LoginRes
 import com.example.neostore.activity.login.LoginPresenter
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home_screen.*
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 import java.lang.Override as Override1
 
 
-class HomeScreenActivity : BaseActivity(), LoginContract.View {
+class HomeScreenActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListener {
+
+    val sharedPrefFile = "kotlinsharedpreference"
+
+
+    override fun onNavigationItemSelected(it: MenuItem): Boolean {
+
+        when(it.itemId){
+            R.id.logout ->{
+                val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+                val editor:SharedPreferences.Editor =  sharedPreferences.edit()
+                editor.clear()
+                editor.apply()
+                val intent1 = Intent(this@HomeScreenActivity, LoginActivity::class.java)
+                startActivity(intent1)
+                finish()
+            }
+        }
+        return true
+    }
 
     var current_position: Int = 0
-
-    val presenter = LoginPresenter(this)
-    override val getPresenter: BasePresenter
-        get() = presenter
 
     override fun getLayout(): Int {
         return R.layout.activity_home_screen
@@ -38,6 +60,7 @@ class HomeScreenActivity : BaseActivity(), LoginContract.View {
         super.onCreate(savedInstanceState)
         /////////////////  This is use to Set Toolbar,Add Back Button and Hide Menu button
         setToolbar("NeoSTORE")
+        navigationView.setNavigationItemSelectedListener(this)
 
         // This is use to open navigation drawer
         ivMenu.setOnClickListener {
@@ -57,9 +80,14 @@ class HomeScreenActivity : BaseActivity(), LoginContract.View {
         ivCupbords.setOnClickListener {
             navigatToProductList("4")
         }
+
+
         // call init method
         init()
+
     }
+
+
 
     fun navigatToProductList(productId:String){
         val bundle=Bundle()
@@ -87,31 +115,6 @@ class HomeScreenActivity : BaseActivity(), LoginContract.View {
         return super.onContextItemSelected(item)
     }
 
-    override fun loginSuccess(response: LoginRes?) {
-
-    }
-
-    override fun loginFail() {
-    }
-
-    override fun showEmailError() {
-    }
-
-    override fun showPasswordError() {
-    }
-
-    override fun showError(message: String) {
-    }
-
-    override fun showLoading() {
-    }
-
-    override fun hideLoading() {
-    }
-
-    override fun logout() {
-    }
-
     fun init() {
         //getPresenter.onStart()
         // Adapter code
@@ -119,7 +122,6 @@ class HomeScreenActivity : BaseActivity(), LoginContract.View {
         viewPager.adapter=adapter
 
         indicator.setViewPager(viewPager)
-
         // For accessing images array in activity
         val img = adapter.images
         val viewpager = findViewById(R.id.viewPager) as ViewPager

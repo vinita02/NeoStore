@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.toolbar.tvTitle
 abstract class BaseActivity : AppCompatActivity() {
     abstract  fun getLayout():Int
 
-    abstract val getPresenter : BasePresenter
+   // lateinit var  getPresenter : BasePresenter
 
 override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +37,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     override fun onStart() {
         super.onStart()
-        getPresenter.onStart()
+        //getPresenter.onStart()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        getPresenter.onDestroy()
+        //getPresenter.onDestroy()
     }
 
 }

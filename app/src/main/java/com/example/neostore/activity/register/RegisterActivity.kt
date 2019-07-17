@@ -18,9 +18,6 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
 
     val presenter = RegisterPresenter(this)
 
-    override val getPresenter: BasePresenter
-        get() = presenter
-
     var gebderCheck:String?= null
 
     override fun getLayout(): Int {

@@ -1,7 +1,11 @@
 package com.example.neostore.activity.login
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.provider.ContactsContract.DisplayNameSources.EMAIL
+import android.widget.Toast
 import com.example.neostore.base.BasePresenter
 import com.example.neostore.R
 import com.example.neostore.base.BaseActivity
@@ -14,12 +18,13 @@ import kotlinx.android.synthetic.main.activity_login.etPassword
 import retrofit2.Callback as Callback1
 
 
+
+
+
 class LoginActivity : BaseActivity(), LoginContract.View {
 
+    val sharedPrefFile = "kotlinsharedpreference"
     val presenter = LoginPresenter(this)
-
-    override val getPresenter: BasePresenter
-            get() =  presenter
 
     override fun getLayout(): Int {
         return R.layout.activity_login
@@ -36,9 +41,25 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     override fun loginSuccess(response: LoginRes?) {
-        show("Successful")
-        val intent = Intent(this@LoginActivity, HomeScreenActivity::class.java)
-        startActivity(intent)
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+
+        val editor:SharedPreferences.Editor =  sharedPreferences.edit()
+        val email = etEmail.text.toString().trim()
+        val password = etPassword.text.toString().trim()
+        editor.putString("email_key",email)
+        editor.putString("pass_key",password)
+        editor.apply()
+        editor.commit()
+
+            show("Successful")
+
+            Toast.makeText(this@LoginActivity, "Saves", Toast.LENGTH_LONG).show()
+
+            val intent = Intent(this@LoginActivity, HomeScreenActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+
     }
 
     override fun loginFail() {
@@ -70,6 +91,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
             var check =  presenter.validation(email,password)
 
             if(check){
+
                 presenter.getResult(email,password)
             }
 

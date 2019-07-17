@@ -14,8 +14,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class ForgotPasswordActivity : BaseActivity(), LoginContract.View {
 
     val presenter = LoginPresenter(this)
-    override val getPresenter: BasePresenter
-        get() = presenter
+
 
     override fun getLayout(): Int {
         return R.layout.activity_forgot_password
