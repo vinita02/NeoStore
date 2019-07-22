@@ -1,5 +1,6 @@
 package com.example.neostore.api
 
+import com.example.neostore.activity.product_detail.SingleDataItem
 import com.example.neostore.activity.login.model.LoginRes
 import com.example.neostore.activity.product.model.ProductResponse
 import io.reactivex.Observable
@@ -36,4 +37,8 @@ interface Api {
         @Query(value = "page ")page:String
     ):Observable<ProductResponse>
 
+    @GET(value = "api/products/getDetail")
+    fun productDetails(
+        @Query(value = "product_id")product_id:String
+    ):Observable<SingleDataItem>
 }

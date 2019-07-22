@@ -12,9 +12,8 @@ import io.reactivex.schedulers.Schedulers
 class ProductPresenter(view: ProductContract.View, context: Context):
     ProductContract.Presenter {
 
-   private var myadapter: ProductAdapter? = null
+
     var mView : ProductContract.View? = null
-    lateinit var mRecyclerView: RecyclerView
     var context: Context? = null
 
     init {
@@ -22,9 +21,7 @@ class ProductPresenter(view: ProductContract.View, context: Context):
         this.context = context
     }
 
-    fun setAdapter(mRecyclerView: RecyclerView) {
-        this.mRecyclerView = mRecyclerView
-    }
+
     override fun productList(product_category_id: String, limit: String, page: String) {
 
         val apiClient =  ApiManger.create().productList(product_category_id,limit,page)
@@ -34,13 +31,7 @@ class ProductPresenter(view: ProductContract.View, context: Context):
                 onNext = {
 
                     if (it != null) {
-
-                        myadapter = ProductAdapter(it.data1, context)
-                        Log.d("Tag","message:"+it.data1!!.size)
-
-                        mRecyclerView.adapter = myadapter
-
-//                        mView?.getProduct(it.data1!![1].name!!)
+                   mView?.setAdapter(it)
 
                     }
                 },

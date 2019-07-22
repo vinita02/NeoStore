@@ -13,7 +13,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name=".SeaterDiningTableActivity">
+        <activity android:name=".activity.product_detail.ProductDetailsActivity">
 
         </activity>
         <activity android:name=".activity.product.ProductListActivity">

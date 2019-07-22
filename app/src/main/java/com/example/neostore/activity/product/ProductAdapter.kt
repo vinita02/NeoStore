@@ -1,6 +1,7 @@
 package com.example.neostore.activity.product
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,9 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.neostore.R
+import com.example.neostore.activity.product_detail.ProductDetailsActivity
 import com.example.neostore.activity.product.model.ProductItem
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.list_layout.view.*
 
 class ProductAdapter:RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
@@ -40,10 +41,15 @@ class ProductAdapter:RecyclerView.Adapter<ProductAdapter.ViewHolder> {
             holder.textViewShortDesc.text = data1!!.get(position).producer
             holder.textViewPrice.text = data1!!.get(position).cost.toString()
             holder.ratingBar.rating = data1!!.get(position).rating!!.toFloat()
-           /* holder.idLinear.setOnClickListener{
+            ///////////// This lines are call itemclick on api product/////////
+            holder.idLinear.setOnClickListener{
 
                 data1!!.get(position).id
-            }*/
+                val intent = Intent(context, ProductDetailsActivity::class.java)
+                intent.putExtra("id_value", data1!!.get(position).id)
+                context?.startActivity(intent)
+
+            }
             Picasso.get().load(data1!!.get(position).productImages!!).into(holder.imageV)
 
         }
@@ -63,6 +69,6 @@ class ProductAdapter:RecyclerView.Adapter<ProductAdapter.ViewHolder> {
             val textViewShortDesc = itemView.findViewById<TextView>(R.id.textViewShortDesc)
             val textViewPrice = itemView.findViewById<TextView>(R.id.textViewPrice)
             val ratingBar = itemView.findViewById<RatingBar>(R.id.ratingBar)
-            //var idLinear = itemView.findViewById<LinearLayout>(R.id.idLinear)
+            var idLinear = itemView.findViewById<LinearLayout>(R.id.idLinear)
         }
 }
