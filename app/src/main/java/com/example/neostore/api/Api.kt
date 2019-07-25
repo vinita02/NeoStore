@@ -1,5 +1,6 @@
 package com.example.neostore.api
 
+import com.example.neostore.RatingResponse
 import com.example.neostore.activity.product_detail.SingleDataItem
 import com.example.neostore.activity.login.model.LoginRes
 import com.example.neostore.activity.product.model.ProductResponse
@@ -41,4 +42,11 @@ interface Api {
     fun productDetails(
         @Query(value = "product_id")product_id:String
     ):Observable<SingleDataItem>
+
+    @FormUrlEncoded
+    @POST(value = "api/products/setRating")
+    fun productRating(
+        @Field(value = "product_id")product_id: String,
+        @Field(value = "rating")rating: Int
+    ):Observable<RatingResponse>
 }

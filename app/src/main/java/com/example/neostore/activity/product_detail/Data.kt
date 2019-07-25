@@ -1,6 +1,7 @@
-package com.example.neostore
+package com.example.neostore.activity.product_detail
 
 
+import com.example.neostore.activity.product_detail.ProductImage
 import com.google.gson.annotations.SerializedName
 
 data class Data(
@@ -21,7 +22,7 @@ data class Data(
     @SerializedName("product_category_id")
     val productCategoryId: Int = 0,
     @SerializedName("product_images")
-    val productImages: String = "",
+    val productImages: List<ProductImage> = listOf(),
     @SerializedName("rating")
     val rating: Int = 0,
     @SerializedName("view_count")

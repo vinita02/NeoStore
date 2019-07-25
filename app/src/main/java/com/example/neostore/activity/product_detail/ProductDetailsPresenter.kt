@@ -3,6 +3,7 @@ package com.example.neostore.activity.product_detail
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import com.example.neostore.RatingDialogFragment
 import com.example.neostore.api.ApiManger
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -43,6 +44,24 @@ ProductDetailsContract.Presenter{
                 }
 
             )
+    }
+
+    fun setRating(rating : Int,product_id: String){
+     val apiClient =  ApiManger.create().productRating(product_id,rating)
+        apiClient.observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribeBy (
+                onNext = {
+                    mView!!.getRatingData(it)
+
+                },
+                onError = {
+
+                },
+                onComplete = {
+
+                })
+
     }
 
     override fun onStart() {

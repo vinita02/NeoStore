@@ -1,6 +1,7 @@
 package com.example.neostore.activity.product_detail
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.service.quicksettings.Tile
 import android.util.EventLogTags
@@ -9,35 +10,57 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.neostore.ProductDialogFragment
 import com.example.neostore.R
+import com.example.neostore.RatingDialogFragment
+import com.example.neostore.RatingResponse
 import com.example.neostore.activity.product.ProductAdapter
 import com.example.neostore.base.BaseActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_product_details.*
+import kotlinx.android.synthetic.main.dialog_fragment_quantity.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, ProductDetailsAdapter.onItemClick {
+class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, ProductDetailsAdapter.onItemClick,RatingDialogFragment.ExampleDialogListener
+{
+    override fun applyRating(rating :Int ,product_id: String) {
+        presenter.setRating(rating,product_id)
+    }
+
+    override fun getRatingData(data: RatingResponse) {
+              Log.d("TAG","Rating Response")
+        var  rate = (data.data.rating).toFloat()
+        ratings?.rating = rate
+        Log.d("TAG","Rating Response")
+    }
 
     private var myadapter:ProductDetailsAdapter? = null
     var context: Context? = null
     private var list:List<ProductImage>? = null
+    val presenter = ProductDetailsPresenter(this, this)
 
     lateinit var name:String
     lateinit var producer:String
     lateinit var rating:String
     lateinit var description :String
      var cost:Int? = null
+    var Pimage:String? = null
 
-    var title : TextView?= null
+
+    var title : TextView?? = null
     var subtitle:TextView? = null
     var ratings : RatingBar? = null
     var descriptions:TextView? = null
     var costs:TextView? = null
+    lateinit  var product_id : String
+
 
 
     override fun getLayout(): Int {
@@ -45,18 +68,20 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
     }
 
     override fun getProductData(response: SingleDataItem) {
-        Log.d("TAG","response")
+       // Log.d("TAG","response")
         name = response.data.name
         producer = response.data.producer
         rating = response.data.rating.toString()
         description = response.data.description
         cost = response.data.cost
+        response.data.productImages
+
+
         title?.text = name
         subtitle?.text = producer
         ratings?.rating = rating.toFloat()
         descriptions?.text = description
         costs?.text = cost.toString()
-
     }
 
     override fun onClicked(position: Int) {
@@ -65,17 +90,14 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
 
     override fun getProductImages(productImages: List<ProductImage>) {
         list = productImages;
-        Picasso.get().load(productImages.get(0).image).into(imageView)
-
+         Picasso.get().load(productImages.get(0).image).into(imageView)
+        Pimage = productImages.get(0).image
     }
 
     override fun setAdapter(data1: List<ProductImage>) {
-
         myadapter = ProductDetailsAdapter(data1, context, this)
         recyclerView.adapter = myadapter
     }
-
-    val presenter = ProductDetailsPresenter(this, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,10 +116,34 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
         descriptions = findViewById(R.id.tvDescrib)
         costs = findViewById(R.id.tvPrice)
 
-
+        product_id = intent.extras.getInt("id_value").toString()
         presenter.productDetails(intent.extras.get("id_value").toString())
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL ,false)
 
+///////////passing data to dialog fragment///////////
+        btnBusyNow.setOnClickListener {
+            //lLayoutRating.setVisibility(View.GONE)
+            val fm = supportFragmentManager
+            val dialogFragment = ProductDialogFragment()
+            val  bundle = Bundle()
+            bundle.putString("title",name);
+            bundle.putString("image",Pimage)
+            dialogFragment.setArguments(bundle)
+            dialogFragment.show(fm, "ProductDialogFragment")
+        }
+
+        btnRate.setOnClickListener{
+           // presenter.setRating(intent.extras?.get("product_id").toString())
+           // presenter.setRating("1")
+            val fm = supportFragmentManager
+            val ratingFragment = RatingDialogFragment(this,product_id)
+            val bundle = Bundle()
+            bundle.putString("title",name)
+            bundle.putString("image",Pimage)
+            bundle.putString("rating",rating)
+            ratingFragment.setArguments(bundle)
+            ratingFragment.show(fm,"RatingDialogFragment")
+        }
 
     }
 

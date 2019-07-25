@@ -80,14 +80,10 @@ class HomeScreenActivity : BaseActivity(),NavigationView.OnNavigationItemSelecte
         ivCupbords.setOnClickListener {
             navigatToProductList("4")
         }
-
-
         // call init method
         init()
 
     }
-
-
 
     fun navigatToProductList(productId:String){
         val bundle=Bundle()

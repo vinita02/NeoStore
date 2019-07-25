@@ -1,7 +1,6 @@
 package com.example.neostore.activity.product_detail
 
 
-import com.example.neostore.Data
 import com.google.gson.annotations.SerializedName
 
 data class SingleDataItem(
