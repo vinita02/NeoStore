@@ -1,6 +1,5 @@
 package com.example.neostore.activity.product_detail
 
-import com.example.neostore.RatingResponse
 import com.example.neostore.base.BasePresenter
 import com.example.neostore.base.BaseView
 

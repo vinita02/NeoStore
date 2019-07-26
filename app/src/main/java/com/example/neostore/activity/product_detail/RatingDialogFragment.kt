@@ -1,19 +1,16 @@
-package com.example.neostore
+package com.example.neostore.activity.product_detail
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.neostore.activity.product_detail.ProductDetailsActivity
-import com.example.neostore.activity.product_detail.ProductDetailsAdapter
+import com.example.neostore.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.dialog_fragment_quantity.*
 import kotlinx.android.synthetic.main.dialog_fragment_quantity.imageViewDialog
 import kotlinx.android.synthetic.main.dialog_fragment_quantity.tvHeader
 import kotlinx.android.synthetic.main.dialog_fragment_rating.*
-import com.example.neostore.RatingDialogFragment.ExampleDialogListener as RatingDialogFragmentExampleDialogListener
+import com.example.neostore.activity.product_detail.RatingDialogFragment.ExampleDialogListener as RatingDialogFragmentExampleDialogListener
 
 class RatingDialogFragment(lists: ExampleDialogListener, id : String):DialogFragment() {
     lateinit var titleName:String

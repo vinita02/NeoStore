@@ -1,10 +1,11 @@
-package com.example.neostore
+package com.example.neostore.activity.product_detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.neostore.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.dialog_fragment_quantity.*
 

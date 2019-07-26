@@ -13,6 +13,12 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
+        <activity android:name=".activity.reset_password.ChangePasswordActivity">
+        </activity>
+        <activity android:name=".activity.edit_profile.EditProfileActivity">
+        </activity>
+        <activity android:name=".activity.my_account.FetchAccountDetailsActivity">
+        </activity>
         <activity android:name=".ProductRatingActivity">
         </activity>
         <activity android:name=".activity.mycart.My_Cart_Activity">

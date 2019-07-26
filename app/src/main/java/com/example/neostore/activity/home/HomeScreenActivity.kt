@@ -20,6 +20,7 @@ import com.example.neostore.base.BasePresenter
 import com.example.neostore.activity.login.LoginContract
 import com.example.neostore.activity.login.model.LoginRes
 import com.example.neostore.activity.login.LoginPresenter
+import com.example.neostore.activity.my_account.FetchAccountDetailsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home_screen.*
@@ -45,6 +46,11 @@ class HomeScreenActivity : BaseActivity(),NavigationView.OnNavigationItemSelecte
                 val intent1 = Intent(this@HomeScreenActivity, LoginActivity::class.java)
                 startActivity(intent1)
                 finish()
+            }
+            R.id.myAccount ->{
+
+                val intent = Intent(this@HomeScreenActivity,FetchAccountDetailsActivity::class.java)
+                startActivity(intent)
             }
         }
         return true

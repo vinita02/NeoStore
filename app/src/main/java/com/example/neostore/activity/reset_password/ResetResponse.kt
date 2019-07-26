@@ -1,11 +1,9 @@
-package com.example.neostore
+package com.example.neostore.activity.reset_password
 
 
 import com.google.gson.annotations.SerializedName
 
-data class RatingResponse(
-    @SerializedName("data")
-    val `data`: Data = Data(),
+data class ResetResponse(
     @SerializedName("message")
     val message: String = "",
     @SerializedName("status")

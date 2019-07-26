@@ -3,7 +3,6 @@ package com.example.neostore.activity.product_detail
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
-import com.example.neostore.RatingDialogFragment
 import com.example.neostore.api.ApiManger
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy

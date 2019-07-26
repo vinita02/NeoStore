@@ -1,34 +1,24 @@
 package com.example.neostore.activity.product_detail
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
-import android.service.quicksettings.Tile
-import android.util.EventLogTags
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.neostore.ProductDialogFragment
 import com.example.neostore.R
-import com.example.neostore.RatingDialogFragment
-import com.example.neostore.RatingResponse
-import com.example.neostore.activity.product.ProductAdapter
 import com.example.neostore.base.BaseActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_product_details.*
-import kotlinx.android.synthetic.main.dialog_fragment_quantity.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, ProductDetailsAdapter.onItemClick,RatingDialogFragment.ExampleDialogListener
+class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, ProductDetailsAdapter.onItemClick,
+    RatingDialogFragment.ExampleDialogListener
 {
     override fun applyRating(rating :Int ,product_id: String) {
         presenter.setRating(rating,product_id)
@@ -136,7 +126,7 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
            // presenter.setRating(intent.extras?.get("product_id").toString())
            // presenter.setRating("1")
             val fm = supportFragmentManager
-            val ratingFragment = RatingDialogFragment(this,product_id)
+            val ratingFragment = RatingDialogFragment(this, product_id)
             val bundle = Bundle()
             bundle.putString("title",name)
             bundle.putString("image",Pimage)

@@ -8,9 +8,8 @@ import android.os.Bundle
 import android.provider.ContactsContract.DisplayNameSources.EMAIL
 import android.provider.Telephony.Carriers.PASSWORD
 import android.widget.Toast
-import com.example.neostore.LOGGEDIN
+import com.example.neostore.*
 import com.example.neostore.base.BasePresenter
-import com.example.neostore.R
 import com.example.neostore.base.BaseActivity
 import com.example.neostore.activity.ForgotPasswordActivity
 import com.example.neostore.activity.home.HomeScreenActivity
@@ -45,6 +44,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun loginSuccess(response: LoginRes?) {
 
+
         val sharedPreferences:SharedPreferences = getSharedPreferences(sharedPrefFile,Context.MODE_PRIVATE)
         val editor:SharedPreferences.Editor = sharedPreferences.edit()
 
@@ -53,6 +53,15 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
         editor.putString( com.example.neostore.EMAIL,email)
         editor.putString(com.example.neostore.PASSWORD,password)
+        editor.putString(AccessToken,response?.data?.accessToken)
+      /*  editor.putString(FirstName,response?.data?.firstName)
+        editor.putString(LastName,response?.data?.lastName)
+
+        editor.putString(DateOfBirth,response?.data?.dob.toString())
+        editor.putString(ProfilePic,response?.data?.profilePic.toString())
+        editor.putString(PhoneNo,response?.data?.phoneNo)*/
+
+
         editor.putBoolean(LOGGEDIN,true)
         editor.apply()
         editor.commit()
