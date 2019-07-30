@@ -1,6 +1,7 @@
 package com.example.neostore.activity.product_detail
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -11,6 +12,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.neostore.AccessToken
 import com.example.neostore.R
 import com.example.neostore.base.BaseActivity
 import com.squareup.picasso.Picasso
@@ -18,12 +20,19 @@ import kotlinx.android.synthetic.main.activity_product_details.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, ProductDetailsAdapter.onItemClick,
-    RatingDialogFragment.ExampleDialogListener
+    RatingDialogFragment.ExampleDialogListener,ProductDialogFragment.ExampleListener
 {
+    override fun enterQuntity(access_token: String, product_id: String, quantity: String) {
+        presenter.setQuantity(access_token,product_id,quantity)
+    }
+
+    override fun getQuantity(data: QuantityResponse){
+
+        Log.d("TAG","Quantity Response")
+    }
     override fun applyRating(rating :Int ,product_id: String) {
         presenter.setRating(rating,product_id)
     }
-
     override fun getRatingData(data: RatingResponse) {
               Log.d("TAG","Rating Response")
         var  rate = (data.data.rating).toFloat()
@@ -50,6 +59,9 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
     var descriptions:TextView? = null
     var costs:TextView? = null
     lateinit  var product_id : String
+    lateinit var token:String
+
+    val sharedPrefFile = "kotlinsharedpreference"
 
 
 
@@ -106,7 +118,11 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
         descriptions = findViewById(R.id.tvDescrib)
         costs = findViewById(R.id.tvPrice)
 
+        val sharedPreferences: SharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+         token = sharedPreferences.getString(AccessToken,"")
         product_id = intent.extras.getInt("id_value").toString()
+
+
         presenter.productDetails(intent.extras.get("id_value").toString())
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL ,false)
 
@@ -114,7 +130,7 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
         btnBusyNow.setOnClickListener {
             //lLayoutRating.setVisibility(View.GONE)
             val fm = supportFragmentManager
-            val dialogFragment = ProductDialogFragment()
+            val dialogFragment = ProductDialogFragment(this,product_id,token)
             val  bundle = Bundle()
             bundle.putString("title",name);
             bundle.putString("image",Pimage)

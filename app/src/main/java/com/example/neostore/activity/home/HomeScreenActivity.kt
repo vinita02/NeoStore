@@ -10,21 +10,15 @@ import android.os.Handler
 //import androidx.core.view.ViewPager
 import android.view.*
 import android.widget.Toast
-import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
+import com.example.neostore.activity.my_cart.MyCartActivity
 import com.example.neostore.R
 import com.example.neostore.activity.login.LoginActivity
 import com.example.neostore.base.BaseActivity
 import com.example.neostore.activity.product.ProductListActivity
-import com.example.neostore.base.BasePresenter
-import com.example.neostore.activity.login.LoginContract
-import com.example.neostore.activity.login.model.LoginRes
-import com.example.neostore.activity.login.LoginPresenter
 import com.example.neostore.activity.my_account.FetchAccountDetailsActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home_screen.*
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 import java.lang.Override as Override1
@@ -50,6 +44,10 @@ class HomeScreenActivity : BaseActivity(),NavigationView.OnNavigationItemSelecte
             R.id.myAccount ->{
 
                 val intent = Intent(this@HomeScreenActivity,FetchAccountDetailsActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.myCart ->{
+                val intent = Intent(this@HomeScreenActivity, MyCartActivity::class.java)
                 startActivity(intent)
             }
         }

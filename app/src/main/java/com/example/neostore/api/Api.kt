@@ -1,5 +1,7 @@
 package com.example.neostore.api
 
+import com.example.neostore.activity.my_cart.CartResponse
+import com.example.neostore.activity.product_detail.QuantityResponse
 import com.example.neostore.activity.edit_profile.EditProfileResponse
 import com.example.neostore.activity.my_account.MyAccountResponse
 import com.example.neostore.activity.product_detail.RatingResponse
@@ -78,4 +80,17 @@ interface Api {
         @Field("password") password: String,
         @Field("confirm_password") confirm_password: String
     ):Observable<ResetResponse>
+
+    @FormUrlEncoded
+    @POST(value = "api/addToCart")
+    fun enterQuantity(
+        @Header("access_token")access_token: String,
+        @Field("product_id")product_id:String,
+    @Field("quantity")quantity:String
+    ):Observable<QuantityResponse>
+
+    @GET("api/cart")
+    fun cartList(
+        @Header("access_token")access_token: String
+    ):Observable<CartResponse>
 }

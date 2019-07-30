@@ -4,36 +4,32 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:id="@+id/lLayout">
-    <TextView
-            android:id="@+id/tvHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="30dp"
-            android:gravity="center"/>
 
-    <ImageView
-            android:id="@+id/imageViewDialog"
-            android:layout_marginTop="40dp"
-            android:layout_width="220dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center"/>
+    <TextView android:id="@+id/tvHeader"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="20sp"
+              android:textColor="@android:color/black"
+              android:layout_marginTop="30dp"
+              android:gravity="center"/>
 
-    <RatingBar
-            android:id="@+id/rating_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            style="@style/RatingBar"
-            android:stepSize="1"
-            android:progressTint="#FFBA00"
-           />
+    <ImageView android:id="@+id/imageViewDialog"
+               android:layout_marginTop="40dp"
+               android:layout_width="220dp"
+               android:layout_height="180dp"
+               android:layout_gravity="center"/>
+
+    <RatingBar android:id="@+id/rating_bar"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginTop="30dp"
+               style="@style/RatingBar"
+               android:stepSize="1"
+               android:progressTint="#FFBA00"/>
 
 
-    <Button
-            android:id="@+id/buttonRateNow"
+    <Button android:id="@+id/buttonRateNow"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_gravity="center"
@@ -41,6 +37,6 @@
             android:background="@android:color/holo_red_dark"
             android:text="RATE NOW"
             android:textColor="@color/white"
-            android:layout_marginBottom="20dp"
-    />
+            android:layout_marginBottom="20dp"/>
+
 </LinearLayout>

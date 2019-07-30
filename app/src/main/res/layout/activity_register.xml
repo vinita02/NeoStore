@@ -17,109 +17,96 @@
 
        <include layout="@layout/toolbar"></include>
 
-    <TextView
-            android:id="@+id/tvNeoStore"
-            android:text="@string/neostore"
-            style="@style/textView_bg"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="24dp"/>
+    <TextView  android:id="@+id/tvNeoStore"
+               android:text="@string/neostore"
+               style="@style/textView_bg"
+               android:textColor="@android:color/white"
+               android:layout_marginTop="24dp"/>
 
-    <EditText
-            android:id="@+id/etFirstName"
-            android:hint="@string/first_name"
-            android:inputType="text"
-            style="@style/edittText_bg"
-            android:drawableLeft="@drawable/user_symbol"/>
+    <EditText  android:id="@+id/etFirstName"
+               android:hint="@string/first_name"
+               android:inputType="text"
+               style="@style/edittText_bg"
+               android:drawableLeft="@drawable/user_symbol"/>
 
-    <EditText
-            android:id="@+id/etLastName"
-            android:hint="@string/last_name"
-            android:inputType="text"
-            style="@style/edittText_bg"
-            android:drawableLeft="@drawable/user_symbol"/>
+    <EditText  android:id="@+id/etLastName"
+               android:hint="@string/last_name"
+               android:inputType="text"
+               style="@style/edittText_bg"
+               android:drawableLeft="@drawable/user_symbol"/>
 
-    <EditText
-            android:id="@+id/etEmail"
-            android:hint="@string/Email"
-            android:inputType="textEmailAddress"
-            style="@style/edittText_bg"
-            android:drawableLeft="@drawable/email_symbol"/>
+    <EditText  android:id="@+id/etEmail"
+               android:hint="@string/Email"
+               android:inputType="textEmailAddress"
+               style="@style/edittText_bg"
+               android:drawableLeft="@drawable/email_symbol"/>
 
-    <EditText
-            android:id="@+id/etPassword"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            style="@style/edittText_bg"
-            android:drawableLeft="@drawable/lock_symbol"/>
+    <EditText  android:id="@+id/etPassword"
+               android:hint="@string/password"
+               android:inputType="textPassword"
+               style="@style/edittText_bg"
+               android:drawableLeft="@drawable/lock_symbol"/>
 
-    <EditText
-            android:id="@+id/etConformPassword"
-            android:hint="@string/confirm_password"
-            android:inputType="textPassword"
-            style="@style/edittText_bg"
-            android:drawableLeft="@drawable/lock_symbol"/>
+    <EditText  android:id="@+id/etConformPassword"
+               android:hint="@string/confirm_password"
+               android:inputType="textPassword"
+               style="@style/edittText_bg"
+               android:drawableLeft="@drawable/lock_symbol"/>
 
-    <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="24dp">
+    <RadioGroup  android:id="@+id/radioGroup"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+                 android:layout_marginTop="24dp">
 
-        <TextView
-                android:id="@+id/tvGender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gender"
-                android:textColor="@color/white"
-                style="@style/textView_bg"
-                android:layout_gravity="center"/>
+        <TextView  android:id="@+id/tvGender"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/gender"
+                   android:textColor="@color/white"
+                   style="@style/textView_bg"
+                   android:layout_gravity="center"/>
 
-        <RadioButton
-                android:id="@+id/rbMale"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/male"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginLeft="10dp"
-                android:buttonTint="@color/white"/>
+        <RadioButton  android:id="@+id/rbMale"
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:text="@string/male"
+                      android:textSize="20sp"
+                      android:textColor="@color/white"
+                      android:layout_marginLeft="10dp"
+                      android:buttonTint="@color/white"/>
 
-        <RadioButton
-                android:id="@+id/rbFemale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/female"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginLeft="10dp"
-                android:buttonTint="@color/white"/>
+        <RadioButton  android:id="@+id/rbFemale"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/female"
+                      android:textSize="20sp"
+                      android:textColor="@color/white"
+                      android:layout_marginLeft="10dp"
+                      android:buttonTint="@color/white"/>
     </RadioGroup>
 
-    <EditText
-            android:id="@+id/etPhoneNo"
-            android:hint="@string/phone_number"
-            android:inputType="number"
-            style="@style/edittText_bg"
-            android:drawableLeft="@drawable/phone_android"/>
+    <EditText  android:id="@+id/etPhoneNo"
+               android:hint="@string/phone_number"
+               android:inputType="number"
+               style="@style/edittText_bg"
+               android:drawableLeft="@drawable/phone_android"/>
 
-    <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:text="I agree the Terms and conditions"
-            style="@style/textView_bg"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_marginTop="24dp"
-            android:buttonTint="@color/white"/>
+    <CheckBox  android:id="@+id/checkBox"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="@android:color/white"
+               android:text="I agree the Terms and conditions"
+               style="@style/textView_bg"
+               android:gravity="center"
+               android:layout_gravity="center"
+               android:layout_marginTop="24dp"
+               android:buttonTint="@color/white"/>
 
-    <Button
-            android:id="@+id/btnRegister"
-            style="@style/button_bg"
-            android:text="REGISTER"
-            android:background="@drawable/button_rounded"/>
+    <Button  android:id="@+id/btnRegister"
+             style="@style/button_bg"
+             android:text="REGISTER"
+             android:background="@drawable/button_rounded"/>
 
 </LinearLayout>
 

@@ -7,6 +7,7 @@ interface ProductDetailsContract {
     interface View: BaseView
     {
         fun getProductData(data: SingleDataItem)
+        fun getQuantity(data: QuantityResponse)
         fun getRatingData(data: RatingResponse)
         fun  getItemProductDetail(message:String)
         fun setAdapter(data1:List<ProductImage>)

@@ -18,73 +18,69 @@
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-            <TextView
-                    android:id="@+id/tvTitles"
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    style="@style/seater_text"
-                    android:textSize="20sp"/>
+            <TextView  android:id="@+id/tvTitles"
+                       android:textStyle="bold"
+                       android:textColor="#000000"
+                       style="@style/seater_text"
+                       android:textSize="20sp"/>
 
-            <TextView
-                    android:id="@+id/tvSubTitles"
-                    android:layout_below="@id/tvTitles"
-                    android:textStyle="normal"
-                    style="@style/seater_text"
-                    android:textColor="#4f4f4f"
-                    android:textSize="15sp"
-                    android:text="Category - Table"
-                    />
 
-            <TextView
-                    android:id="@+id/tvSmail"
-                    android:layout_below="@id/tvSubTitles"
-                    android:textStyle="normal"
-                    style="@style/seater_text"
-                    android:textColor="@android:color/black"
-                    android:textSize="15sp"
+            <TextView  android:id="@+id/tvSubTitles"
+                       android:layout_below="@id/tvTitles"
+                       android:textStyle="normal"
+                       style="@style/seater_text"
+                       android:textColor="#4f4f4f"
+                       android:textSize="15sp"
+                       android:text="Category - Table"/>
+
+
+            <TextView  android:id="@+id/tvSmail"
+                       android:layout_below="@id/tvSubTitles"
+                       android:textStyle="normal"
+                       style="@style/seater_text"
+                       android:textColor="@android:color/black"
+                       android:textSize="15sp"
+
                    />
 
-            <RatingBar
-                    android:id="@+id/ratBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/tvSmail"
-                    android:layout_below="@id/tvSubTitles"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="80dp"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:theme="@style/RatingBar"/>
+            <RatingBar  android:id="@+id/ratBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tvSmail"
+                        android:layout_below="@id/tvSubTitles"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="80dp"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:theme="@style/RatingBar"/>
 
-            <TextView
-                    android:id="@+id/tvPrice"
-                    android:layout_below="@id/ratBar"
-                    style="@style/seater_text"
-                    android:textStyle="bold"
-                    android:textColor="#FE4040"
-                    android:textSize="15sp"
 
-                    />
-            <ImageView
-                    android:id="@+id/ivShare"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/tvPrice"
-                    android:layout_below="@id/ratBar"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="80dp"
-                    android:src="@drawable/share"
-            />
+            <TextView  android:id="@+id/tvPrice"
+                       android:layout_below="@id/ratBar"
+                       style="@style/seater_text"
+                       android:textStyle="bold"
+                       android:textColor="#FE4040"
+                       android:textSize="15sp"/>
 
-            <ImageView
-                    android:paddingTop="10dp"
-                    android:id="@+id/imageView"
-                    android:layout_below="@id/tvPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="15dp"
-                    />
+
+            <ImageView  android:id="@+id/ivShare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tvPrice"
+                        android:layout_below="@id/ratBar"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="80dp"
+                        android:src="@drawable/share"/>
+
+
+            <ImageView   android:paddingTop="10dp"
+                         android:id="@+id/imageView"
+                         android:layout_below="@id/tvPrice"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:padding="4dp"
+                         android:layout_marginLeft="50dp"
+                         android:layout_marginTop="15dp"/>
+
 
             <androidx.recyclerview.widget.RecyclerView
                     android:layout_below="@+id/imageView"
@@ -93,37 +89,37 @@
                     android:layout_height="wrap_content">
             </androidx.recyclerview.widget.RecyclerView>
 
-            <TextView
-                    android:layout_below="@id/recyclerView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvDescrib"
-                    android:layout_marginTop="15dp"
-                    android:textColor="#7F7F7F"
-                    android:textSize="15sp"/>
+            <TextView  android:layout_below="@id/recyclerView"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/tvDescrib"
+                       android:layout_marginTop="15dp"
+                       android:textColor="#7F7F7F"
+                       android:textSize="15sp"/>
 
-            <Button
-                    android:id="@+id/btnBusyNow"
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvDescrib"
-                    android:background="@android:color/holo_red_dark"
-                    android:textColor="@android:color/white"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Buy Now"/>
 
-            <Button
-                    android:id="@+id/btnRate"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvDescrib"
-                    android:layout_toRightOf="@+id/btnBusyNow"
-                    android:layout_marginLeft="100dp"
-                    android:background="@android:color/white"
-                   android:textColor="@android:color/black"
-                    android:layout_marginTop="20dp"
-                    android:text="Rate"/>
+            <Button  android:id="@+id/btnBusyNow"
+                     android:layout_width="140dp"
+                     android:layout_height="wrap_content"
+                     android:layout_below="@id/tvDescrib"
+                     android:background="@android:color/holo_red_dark"
+                     android:textColor="@android:color/white"
+                     android:layout_marginLeft="30dp"
+                     android:layout_marginTop="20dp"
+                     android:text="Buy Now"/>
+
+
+            <Button  android:id="@+id/btnRate"
+                     android:layout_width="100dp"
+                     android:layout_height="wrap_content"
+                     android:layout_below="@id/tvDescrib"
+                     android:layout_toRightOf="@+id/btnBusyNow"
+                     android:layout_marginLeft="100dp"
+                     android:background="@android:color/white"
+                     android:textColor="@android:color/black"
+                     android:layout_marginTop="20dp"
+                     android:text="Rate"/>
+
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

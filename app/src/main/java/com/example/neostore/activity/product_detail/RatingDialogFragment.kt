@@ -23,7 +23,6 @@ class RatingDialogFragment(lists: ExampleDialogListener, id : String):DialogFrag
     init {
         listener = lists
         product_id = id
-
     }
 
     override fun onCreateView(
@@ -34,9 +33,6 @@ class RatingDialogFragment(lists: ExampleDialogListener, id : String):DialogFrag
         titleName = arguments?.getString("title")!!
         Image = arguments?.getString("image")!!
         ratingbar = arguments?.getString("rating")!!
-
-
-
         // Log.d("TAG","Title: "+Image)
         return v
     }
@@ -51,10 +47,6 @@ class RatingDialogFragment(lists: ExampleDialogListener, id : String):DialogFrag
 
             val rating = rating_bar.rating.toInt()
             listener.applyRating(rating, product_id)
-            /* if(!rating.equals(""))
-             {
-                 ((ProductDetailsActivity)getActivity).ratBar.setText(rating)
-             }*/
             dialog.dismiss()
         })
     }

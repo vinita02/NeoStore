@@ -20,9 +20,7 @@ class ProductListActivity : BaseActivity(), ProductContract.View {
 
 
   lateinit var myadapter: ProductAdapter
-    lateinit var mRecyclerView: RecyclerView
     var context: Context? = null
-
 
     override fun setAdapter(product: ProductResponse) {
         myadapter = ProductAdapter(product.data1,this)

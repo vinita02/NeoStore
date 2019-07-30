@@ -63,6 +63,28 @@ ProductDetailsContract.Presenter{
 
     }
 
+    fun setQuantity(access_token: String,product_id:String,quantity:String){
+        val apiClient = ApiManger.create().enterQuantity(access_token,product_id,quantity)
+        apiClient.observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribeBy (
+               onNext =  {
+                   mView!!.getQuantity(it)
+
+               },
+                onError = {
+                    Log.d("TAG","message_error")
+
+                },
+                onComplete = {
+
+                })
+
+
+    }
+
+
+
     override fun onStart() {
     }
 
