@@ -24,6 +24,9 @@ override fun onCreate(savedInstanceState: Bundle?) {
        // this line use for to remove NeoStore name to overriden on toolbar
         supportActionBar?.title = null
        tvTitle.setText(title)
+        // Use For Back Buton
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
     }
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

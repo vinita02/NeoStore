@@ -18,65 +18,62 @@
             android:layout_marginTop="80dp"
             android:background="@drawable/shape_circle"
             android:src="@drawable/ic_account_circle_black_24dp"/>
-    <EditText
-            android:id="@+id/et_firstName"
-            android:hint="First Name"
-            android:layout_below="@id/img_profilepic"
-            android:drawableLeft="@drawable/user_symbol"
-            style="@style/edit_text"/>
-    <EditText
-            android:id="@+id/et_lastName"
-            android:hint="Last Name"
-            android:layout_below="@id/et_firstName"
-            android:drawableLeft="@drawable/user_symbol"
-            style="@style/edit_text"
-          />
-    <EditText
-            android:id="@+id/et_email"
-            android:layout_below="@id/et_lastName"
-            android:hint="@string/Email"
-            android:drawableLeft="@drawable/email_symbol"
-            style="@style/edit_text"
-            />
-    <EditText
-            android:id="@+id/et_phn_no"
-            android:hint="Phone Number"
-            android:layout_below="@id/et_email"
-            android:drawableLeft="@drawable/phone_android"
-            style="@style/edit_text"
-            />
-    <EditText
-            android:id="@+id/et_dob"
-            android:hint="@string/date_of_birth"
-            android:layout_below="@id/et_phn_no"
-            android:drawableLeft="@drawable/dob_icon"
-            android:inputType="date"
-            style="@style/edit_text"/>
 
-    <Button
-            android:id="@+id/btn_edit_profile"
-            android:text="Edit Profile"
-            android:textAlignment="center"
-            android:layout_below="@id/et_dob"
-            android:padding="@dimen/std_padding"
-            android:drawablePadding="@dimen/std_padding"
-            android:background="@color/white"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="8dp"
-            style="@style/button_bg"
-            android:layout_marginRight="8dp"/>
+    <EditText  android:id="@+id/et_firstName"
+               android:hint="First Name"
+               android:layout_below="@id/img_profilepic"
+               android:drawableLeft="@drawable/user_symbol"
+               style="@style/edit_text"/>
 
-    <Button
-            android:id="@+id/btn_resetPassword1"
-            android:text="Reset Password"
-            android:textAlignment="center"
-            android:layout_below="@id/btn_edit_profile"
-            android:layout_marginTop="20dp"
-            android:background="@color/white"
-            android:textColor="#7F7F7F"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            style="@style/button_bg"
-    />
+    <EditText   android:id="@+id/et_lastName"
+                android:hint="Last Name"
+                android:layout_below="@id/et_firstName"
+                android:drawableLeft="@drawable/user_symbol"
+                style="@style/edit_text"/>
+
+    <EditText  android:id="@+id/et_email"
+               android:layout_below="@id/et_lastName"
+               android:hint="@string/Email"
+               android:drawableLeft="@drawable/email_symbol"
+               style="@style/edit_text"/>
+
+    <EditText  android:id="@+id/et_phn_no"
+               android:hint="Phone Number"
+               android:layout_below="@id/et_email"
+               android:drawableLeft="@drawable/phone_android"
+               style="@style/edit_text"/>
+
+    <EditText  android:id="@+id/et_dob"
+               android:hint="@string/date_of_birth"
+               android:layout_below="@id/et_phn_no"
+               android:drawableLeft="@drawable/dob_icon"
+               android:inputType="date"
+               style="@style/edit_text"/>
+
+
+    <Button  android:id="@+id/btn_edit_profile"
+             android:text="Edit Profile"
+             android:textAlignment="center"
+             android:layout_below="@id/et_dob"
+             android:padding="@dimen/std_padding"
+             android:drawablePadding="@dimen/std_padding"
+             android:background="@color/white"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="8dp"
+             style="@style/button_bg"
+             android:layout_marginRight="8dp"/>
+
+
+    <Button  android:id="@+id/btn_resetPassword1"
+             android:text="Reset Password"
+             android:textAlignment="center"
+             android:layout_below="@id/btn_edit_profile"
+             android:layout_marginTop="20dp"
+             android:background="@color/white"
+             android:textColor="#7F7F7F"
+             android:layout_marginLeft="8dp"
+             android:layout_marginRight="8dp"
+             style="@style/button_bg"/>
+
 
 </RelativeLayout>

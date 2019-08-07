@@ -13,26 +13,21 @@
             android:layout_width="match_parent"
             android:id="@+id/toolbar"
             android:minHeight="?actionBarSize"
-            android:background="@android:color/holo_red_dark"
-            >
-        <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Toolbar"
-                style="@style/textView_bg"
-                android:textColor="@color/white"
-                android:layout_gravity="center"
+            android:background="@android:color/holo_red_dark" >
 
-        />
-        <ImageView
-                android:id="@+id/ivMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/menu_icon"
-        />
+        <TextView  android:id="@+id/tvTitle"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Toolbar"
+                   style="@style/textView_bg"
+                   android:textColor="@color/white"
+                   android:layout_gravity="center" />
+
+        <ImageView  android:id="@+id/ivMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/menu_icon" />
 
     </androidx.appcompat.widget.Toolbar>
-
 
 </LinearLayout>

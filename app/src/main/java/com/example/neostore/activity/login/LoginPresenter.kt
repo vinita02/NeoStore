@@ -20,7 +20,6 @@ class LoginPresenter(view: LoginContract.View):
     }
 
     override fun onStart() {
-
     }
 
     override fun validation(email:String,password:String):Boolean {
@@ -44,11 +43,8 @@ class LoginPresenter(view: LoginContract.View):
         apiClient.observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({
-                t: LoginRes -> mView?.loginSuccess(t)},
-                {t: Throwable -> mView?.loginFail()}
-            )
+                    t: LoginRes -> mView?.loginSuccess(t)},
+                {t: Throwable -> mView?.loginFail()})
     }
-
-
-    }
+}
 

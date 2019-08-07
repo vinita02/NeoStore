@@ -17,6 +17,7 @@ import com.example.neostore.activity.login.LoginActivity
 import com.example.neostore.base.BaseActivity
 import com.example.neostore.activity.product.ProductListActivity
 import com.example.neostore.activity.my_account.FetchAccountDetailsActivity
+import com.example.neostore.activity.orderlist.My_OrderActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -27,7 +28,6 @@ import java.lang.Override as Override1
 class HomeScreenActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListener {
 
     val sharedPrefFile = "kotlinsharedpreference"
-
 
     override fun onNavigationItemSelected(it: MenuItem): Boolean {
 
@@ -42,12 +42,15 @@ class HomeScreenActivity : BaseActivity(),NavigationView.OnNavigationItemSelecte
                 finish()
             }
             R.id.myAccount ->{
-
                 val intent = Intent(this@HomeScreenActivity,FetchAccountDetailsActivity::class.java)
                 startActivity(intent)
             }
             R.id.myCart ->{
                 val intent = Intent(this@HomeScreenActivity, MyCartActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.myOrder ->{
+                val intent = Intent(this@HomeScreenActivity,My_OrderActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -62,15 +65,18 @@ class HomeScreenActivity : BaseActivity(),NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         /////////////////  This is use to Set Toolbar,Add Back Button and Hide Menu button
         setToolbar("NeoSTORE")
+
         navigationView.setNavigationItemSelectedListener(this)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(false)
         // This is use to open navigation drawer
         ivMenu.setOnClickListener {
             drawer_layout.openDrawer(Gravity.LEFT)
         }
-
         ///////intent////////////////////////
         ivTables.setOnClickListener {
             navigatToProductList("1")
@@ -86,7 +92,6 @@ class HomeScreenActivity : BaseActivity(),NavigationView.OnNavigationItemSelecte
         }
         // call init method
         init()
-
     }
 
     fun navigatToProductList(productId:String){
@@ -110,7 +115,6 @@ class HomeScreenActivity : BaseActivity(),NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this, "Item 1st selected", Toast.LENGTH_SHORT).show()
                 return true
             }
-
         }
         return super.onContextItemSelected(item)
     }
@@ -155,8 +159,5 @@ class HomeScreenActivity : BaseActivity(),NavigationView.OnNavigationItemSelecte
                 current_position = p0
             }
         })
-
     }
-
-
 }

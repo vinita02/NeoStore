@@ -31,9 +31,7 @@ class ChangePasswordActivity : BaseActivity() {
         setContentView(R.layout.activity_change_password)
 
         setToolbar("Reset Password")
-        // Use For Back Buton
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+
         // This line use for to hid menu button from activity
         ivMenu.setVisibility(View.GONE)
         viewModel = ViewModelProviders.of(this).get(ResetViewModel::class.java)

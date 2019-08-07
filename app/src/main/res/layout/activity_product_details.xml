@@ -24,7 +24,6 @@
                        style="@style/seater_text"
                        android:textSize="20sp"/>
 
-
             <TextView  android:id="@+id/tvSubTitles"
                        android:layout_below="@id/tvTitles"
                        android:textStyle="normal"
@@ -33,15 +32,12 @@
                        android:textSize="15sp"
                        android:text="Category - Table"/>
 
-
             <TextView  android:id="@+id/tvSmail"
                        android:layout_below="@id/tvSubTitles"
                        android:textStyle="normal"
                        style="@style/seater_text"
                        android:textColor="@android:color/black"
-                       android:textSize="15sp"
-
-                   />
+                       android:textSize="15sp"/>
 
             <RatingBar  android:id="@+id/ratBar"
                         android:layout_width="wrap_content"
@@ -52,7 +48,6 @@
                         android:layout_marginLeft="80dp"
                         style="?android:attr/ratingBarStyleSmall"
                         android:theme="@style/RatingBar"/>
-
 
             <TextView  android:id="@+id/tvPrice"
                        android:layout_below="@id/ratBar"
@@ -71,7 +66,6 @@
                         android:layout_marginLeft="80dp"
                         android:src="@drawable/share"/>
 
-
             <ImageView   android:paddingTop="10dp"
                          android:id="@+id/imageView"
                          android:layout_below="@id/tvPrice"
@@ -80,7 +74,6 @@
                          android:padding="4dp"
                          android:layout_marginLeft="50dp"
                          android:layout_marginTop="15dp"/>
-
 
             <androidx.recyclerview.widget.RecyclerView
                     android:layout_below="@+id/imageView"
@@ -97,7 +90,6 @@
                        android:textColor="#7F7F7F"
                        android:textSize="15sp"/>
 
-
             <Button  android:id="@+id/btnBusyNow"
                      android:layout_width="140dp"
                      android:layout_height="wrap_content"
@@ -107,7 +99,6 @@
                      android:layout_marginLeft="30dp"
                      android:layout_marginTop="20dp"
                      android:text="Buy Now"/>
-
 
             <Button  android:id="@+id/btnRate"
                      android:layout_width="100dp"

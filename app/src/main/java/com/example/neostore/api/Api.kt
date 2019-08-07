@@ -1,5 +1,6 @@
 package com.example.neostore.api
 
+import com.example.neostore.activity.address_list.AddressListResponse
 import com.example.neostore.activity.my_cart.CartResponse
 import com.example.neostore.activity.product_detail.QuantityResponse
 import com.example.neostore.activity.edit_profile.EditProfileResponse
@@ -7,6 +8,8 @@ import com.example.neostore.activity.my_account.MyAccountResponse
 import com.example.neostore.activity.product_detail.RatingResponse
 import com.example.neostore.activity.product_detail.SingleDataItem
 import com.example.neostore.activity.login.model.LoginRes
+import com.example.neostore.activity.order_details.OrderDetailsResponse
+import com.example.neostore.activity.orderlist.OrderlistResponse
 import com.example.neostore.activity.product.model.ProductResponse
 import com.example.neostore.activity.reset_password.ResetResponse
 import io.reactivex.Observable
@@ -93,4 +96,22 @@ interface Api {
     fun cartList(
         @Header("access_token")access_token: String
     ):Observable<CartResponse>
+
+    @FormUrlEncoded
+    @POST(value = "api/order")
+    fun addAddressList(
+        @Header("access_token")access_token: String,
+        @Field("address")address:String
+    ):Observable<AddressListResponse>
+
+    @GET(value = "api/orderList")
+    fun displayListOfOrder(
+        @Header("access_token")access_token: String
+    ):Observable<OrderlistResponse>
+
+    @GET(value = "api/orderDetail")
+    fun displayOrderDetail(
+        @Header("access_token")access_token: String,
+        @Query("order_id")order_id:String
+    ):Observable<OrderDetailsResponse>
 }

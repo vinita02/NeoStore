@@ -27,35 +27,24 @@ class ForgotPasswordActivity : BaseActivity(), LoginContract.View {
             val intent = Intent(this@ForgotPasswordActivity, RegisterActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 
     override fun loginSuccess(response: LoginRes?) {
-
     }
     override fun loginFail() {
     }
-
     override fun showEmailError() {
     }
-
     override fun showPasswordError() {
     }
-
     override fun showError(message: String) {
     }
-
     override fun showLoading() {
     }
-
     override fun hideLoading() {
     }
-
     override fun logout() {
     }
-
-
 }
 
 

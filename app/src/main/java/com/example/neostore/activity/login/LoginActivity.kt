@@ -20,9 +20,6 @@ import kotlinx.android.synthetic.main.activity_login.etPassword
 import retrofit2.Callback as Callback1
 
 
-
-
-
 class LoginActivity : BaseActivity(), LoginContract.View {
 
     val sharedPrefFile = "kotlinsharedpreference"
@@ -44,7 +41,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun loginSuccess(response: LoginRes?) {
 
-
         val sharedPreferences:SharedPreferences = getSharedPreferences(sharedPrefFile,Context.MODE_PRIVATE)
         val editor:SharedPreferences.Editor = sharedPreferences.edit()
 
@@ -54,24 +50,16 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         editor.putString( com.example.neostore.EMAIL,email)
         editor.putString(com.example.neostore.PASSWORD,password)
         editor.putString(AccessToken,response?.data?.accessToken)
-      /*  editor.putString(FirstName,response?.data?.firstName)
-        editor.putString(LastName,response?.data?.lastName)
-
-        editor.putString(DateOfBirth,response?.data?.dob.toString())
-        editor.putString(ProfilePic,response?.data?.profilePic.toString())
-        editor.putString(PhoneNo,response?.data?.phoneNo)*/
-
-
         editor.putBoolean(LOGGEDIN,true)
         editor.apply()
         editor.commit()
         show("Successful")
         Toast.makeText(this@LoginActivity, "Saves", Toast.LENGTH_LONG).show()
+
         val intent = Intent(this@LoginActivity, HomeScreenActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         finish()
-
     }
 
     override fun loginFail() {
@@ -79,7 +67,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     override fun showError(message: String) {
-
     }
 
     override fun showLoading() {
@@ -91,7 +78,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     override fun logout() {
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -99,7 +85,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         val isLoggedIn = settings.getBoolean(LOGGEDIN, false)
         if(isLoggedIn )
         {
-
             val intent = Intent(this, HomeScreenActivity::class.java)
             startActivity(intent)
         }

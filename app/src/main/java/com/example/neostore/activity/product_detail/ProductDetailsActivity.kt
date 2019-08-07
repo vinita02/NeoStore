@@ -30,9 +30,11 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
 
         Log.d("TAG","Quantity Response")
     }
+
     override fun applyRating(rating :Int ,product_id: String) {
         presenter.setRating(rating,product_id)
     }
+
     override fun getRatingData(data: RatingResponse) {
               Log.d("TAG","Rating Response")
         var  rate = (data.data.rating).toFloat()
@@ -52,7 +54,6 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
      var cost:Int? = null
     var Pimage:String? = null
 
-
     var title : TextView?? = null
     var subtitle:TextView? = null
     var ratings : RatingBar? = null
@@ -60,10 +61,9 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
     var costs:TextView? = null
     lateinit  var product_id : String
     lateinit var token:String
+  //  lateinit var Title:String
 
     val sharedPrefFile = "kotlinsharedpreference"
-
-
 
     override fun getLayout(): Int {
        return R.layout.activity_product_details
@@ -72,14 +72,17 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
     override fun getProductData(response: SingleDataItem) {
        // Log.d("TAG","response")
         name = response.data.name
+       //  Title = name
         producer = response.data.producer
         rating = response.data.rating.toString()
         description = response.data.description
         cost = response.data.cost
         response.data.productImages
 
-
         title?.text = name
+        ////////////////Set Toolbar//////////
+        setToolbar(name)
+
         subtitle?.text = producer
         ratings?.rating = rating.toFloat()
         descriptions?.text = description
@@ -105,10 +108,6 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_details)
 
-        setToolbar("6 Seater Dining Table")
-        // Use For Back Buton
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
         // This line use for to hid menu button from activity
         ivMenu.setVisibility(View.GONE)
 
@@ -121,7 +120,6 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
         val sharedPreferences: SharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
          token = sharedPreferences.getString(AccessToken,"")
         product_id = intent.extras.getInt("id_value").toString()
-
 
         presenter.productDetails(intent.extras.get("id_value").toString())
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL ,false)
@@ -150,23 +148,19 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
             ratingFragment.setArguments(bundle)
             ratingFragment.show(fm,"RatingDialogFragment")
         }
-
     }
 
     override fun getItemProductDetail(message: String) {
     }
-
     override fun showError(message: String) {
     }
-
     override fun showLoading() {
     }
-
     override fun hideLoading() {
     }
-
     override fun logout() {
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu, menu)

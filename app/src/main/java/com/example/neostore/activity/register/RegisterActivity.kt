@@ -29,6 +29,7 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
         val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
         startActivity(intent)
     }
+
     override fun loginFail() {
         show("Fail Login")
     }
@@ -64,13 +65,10 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
 
     override fun showError(message: String) {
     }
-
     override fun showLoading() {
     }
-
     override fun hideLoading() {
     }
-
     override fun logout() {
     }
 
@@ -83,10 +81,6 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
 
         // SetToolbar Title
         setToolbar("Register")
-
-        // Use For Back Buton
-         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         // validation for radio group
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
@@ -102,7 +96,7 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
             val confirm_password = etConformPassword.text.toString()
             val phone_no = etPhoneNo.text.toString()
 
-         val checkRegister =  presenter.validation(first_name,last_name,email,password,
+            val checkRegister =  presenter.validation(first_name,last_name,email,password,
              confirm_password,phone_no)
 
             if(checkRegister) {

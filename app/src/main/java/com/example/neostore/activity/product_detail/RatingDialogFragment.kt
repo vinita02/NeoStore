@@ -19,7 +19,6 @@ class RatingDialogFragment(lists: ExampleDialogListener, id : String):DialogFrag
     lateinit  var listener : ExampleDialogListener
     lateinit  var product_id: String
 
-
     init {
         listener = lists
         product_id = id

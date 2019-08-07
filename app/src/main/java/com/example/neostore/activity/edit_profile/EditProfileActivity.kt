@@ -29,9 +29,11 @@ class EditProfileActivity : BaseActivity() {
         setContentView(R.layout.activity_edit_profile)
 
         setToolbar("Edit Profile")
+
         // Use For Back Buton
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+      //  supportActionBar?.setDisplayShowHomeEnabled(true)
+
         // This line use for to hid menu button from activity
         ivMenu.setVisibility(View.GONE)
 
@@ -47,8 +49,8 @@ class EditProfileActivity : BaseActivity() {
             val dob = et_dob.text.toString()
             val phone_no = et_phn_no.text.toString()
 
-            viewModel.setDetails(sharedPreferences.getString(AccessToken,""),firstName,
-                lastName,email,dob,phone_no,"null")
+            viewModel.setDetails(sharedPreferences.getString(AccessToken,""),
+                firstName, lastName,email,dob,phone_no,"null")
         }
 
         viewModel.editResponse().observe(this,Observer<EditProfileResponse>{
@@ -64,10 +66,11 @@ class EditProfileActivity : BaseActivity() {
         })
     }
 
-    fun response(res:EditProfileResponse){
-        show("successfully Edited"+res.message)
+        fun response(res:EditProfileResponse){
 
-    }
+             show("successfully Edited"+res.message)
+        }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu, menu)

@@ -17,7 +17,7 @@ class ProductDialogFragment(lister:ExampleListener,id: String,token:String): Dia
 
     lateinit var TitleName:String
     lateinit var Image:String
-  lateinit var listener: ExampleListener
+    lateinit var listener: ExampleListener
     lateinit  var product_id:String
     lateinit var access_token: String
 
@@ -31,7 +31,6 @@ class ProductDialogFragment(lister:ExampleListener,id: String,token:String): Dia
         inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
 
         val v = inflater.inflate(R.layout.dialog_fragment_quantity, container, false)
-
 
         TitleName = arguments?.getString("title")!!
         Image = arguments?.getString("image")!!
@@ -57,6 +56,4 @@ class ProductDialogFragment(lister:ExampleListener,id: String,token:String): Dia
     interface ExampleListener{
         fun enterQuntity(access_token: String,product_id:String,quantity:String)
     }
-
-
 }

@@ -23,16 +23,12 @@ class ResetViewModel:ViewModel() {
                     if(it!=null)
                     {
                         editPassword.postValue(it)
-
                     }
-
                 },
                 onError = {
                     editPassword.postValue(null)
-
                 },
                 onComplete = {
-
                 }
             )
     }

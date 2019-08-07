@@ -11,8 +11,6 @@ import io.reactivex.schedulers.Schedulers
 
 open class AccountViewModel:ViewModel() {
 
-
-
     val detailOfAccount:MutableLiveData<MyAccountResponse> = MutableLiveData()
     fun accountResponse():MutableLiveData<MyAccountResponse> = detailOfAccount
 
@@ -25,16 +23,12 @@ open class AccountViewModel:ViewModel() {
                    if(it!=null)
                    {
                        detailOfAccount.postValue(it)
-
                    }
-
                },
                 onError = {
                     detailOfAccount.postValue(null)
-
                 },
                 onComplete = {
-
                 }
             )
    }

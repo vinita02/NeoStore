@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.address_list.AddressListActivity">
+
+    <include layout="@layout/toolbar"></include>
+
+    <TextView  android:id="@+id/tv_shippingAdd"
+               android:textColor="@android:color/black"
+               android:text="Shipping address"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintLeft_toLeftOf="parent"
+               android:layout_marginTop="76dp"
+               android:layout_marginLeft="16dp"/>
+
+    <ListView  android:id="@+id/add_recycle_view"
+               android:layout_width="wrap_content"
+               android:layout_height="420dp"
+               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+               android:layout_marginTop="104dp"
+               android:layout_marginLeft="30dp">
+    </ListView>
+
+    <Button  android:id="@+id/btn_placeOrder"
+             android:background="@android:color/holo_red_dark"
+             android:layout_gravity="center"
+             android:text="PLACE ORDER"
+             app:layout_constraintBottom_toBottomOf="parent"
+             android:textColor="@android:color/white"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             tools:layout_editor_absoluteX="16dp"
+             android:layout_marginBottom="112dp">
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

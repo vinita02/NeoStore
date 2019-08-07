@@ -28,22 +28,18 @@ class FetchAccountDetailsActivity : BaseActivity() {
         return R.layout.activity_fetch_account_details
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fetch_account_details)
 
         setToolbar("My Account")
-        // Use For Back Buton
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+
         // This line use for to hid menu button from activity
         ivMenu.setVisibility(View.GONE)
 
         viewModel = ViewModelProviders.of(this).get(AccountViewModel::class.java)
 
         val sharedPreferences: SharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
-        //val editor:SharedPreferences.Editor = sharedPreferences.edit()
 
         viewModel.getDetails(sharedPreferences.getString(AccessToken,""))
 
@@ -72,14 +68,13 @@ class FetchAccountDetailsActivity : BaseActivity() {
         }
     }
 
-  private fun response(res:MyAccountResponse){
-      et_firstName.setText(res.data.userData.firstName)
-      et_lastName.setText(res.data.userData.lastName)
-      et_email.setText(res.data.userData.email)
-      et_phn_no.setText(res.data.userData.phoneNo)
-      et_dob.setText(res.data.userData.dob.toString())
-  }
-
+         private fun response(res:MyAccountResponse){
+               et_firstName.setText(res.data.userData.firstName)
+               et_lastName.setText(res.data.userData.lastName)
+               et_email.setText(res.data.userData.email)
+               et_phn_no.setText(res.data.userData.phoneNo)
+               et_dob.setText(res.data.userData.dob.toString())
+         }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
@@ -97,6 +92,4 @@ class FetchAccountDetailsActivity : BaseActivity() {
         }
         return super.onContextItemSelected(item)
     }
-
-
 }

@@ -13,8 +13,8 @@ open class EditViewModel:ViewModel() {
     fun editResponse():MutableLiveData<EditProfileResponse> = editProfile
 
     fun setDetails(token:String,first_name:String,last_name:String,email: String,
-                   dob: String,phone_no: String,profile_pic:String?)
-    {
+                   dob: String,phone_no: String,profile_pic:String?) {
+
         val apiClient =  ApiManger.create().editProfiles(token,first_name,last_name,
             email,dob,phone_no,profile_pic)
         apiClient.observeOn(AndroidSchedulers.mainThread())

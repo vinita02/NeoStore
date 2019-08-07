@@ -61,14 +61,13 @@ class ProductAdapter:RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
     }
 
+    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-
-            var imageV = itemView.findViewById<View>(R.id.imageView) as ImageView
-            val textViewTitle = itemView.findViewById<TextView>(R.id.textViewTitle)
-            val textViewShortDesc = itemView.findViewById<TextView>(R.id.textViewShortDesc)
-            val textViewPrice = itemView.findViewById<TextView>(R.id.textViewPrice)
-            val ratingBar = itemView.findViewById<RatingBar>(R.id.ratingBar)
-            var idLinear = itemView.findViewById<LinearLayout>(R.id.idLinear)
-        }
+        var imageV = itemView.findViewById<View>(R.id.imageView) as ImageView
+        val textViewTitle = itemView.findViewById<TextView>(R.id.textViewTitle)
+        val textViewShortDesc = itemView.findViewById<TextView>(R.id.textViewShortDesc)
+        val textViewPrice = itemView.findViewById<TextView>(R.id.textViewPrice)
+        val ratingBar = itemView.findViewById<RatingBar>(R.id.ratingBar)
+        var idLinear = itemView.findViewById<LinearLayout>(R.id.idLinear)
+    }
 }

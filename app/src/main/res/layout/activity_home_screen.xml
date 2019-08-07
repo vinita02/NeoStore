@@ -18,10 +18,10 @@
             android:orientation="vertical">
 
         <include layout="@layout/toolbar"></include>
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-        >
+
+        <RelativeLayout  android:layout_width="match_parent"
+                         android:layout_height="250dp">
+
             <androidx.viewpager.widget.ViewPager
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -43,67 +43,65 @@
             </com.viewpagerindicator.CirclePageIndicator>
 
         </RelativeLayout>
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:weightSum="2"
-        >
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="0dp"
-                          android:orientation="horizontal"
-                          android:gravity="center_horizontal"
-                          android:layout_marginBottom="10dp"
-                          android:layout_marginTop="10dp"
-                          android:layout_weight="1"
-            >
-                <ImageView
-                           android:id="@+id/ivTables"
-                           android:layout_width="0dp"
-                           android:layout_height="match_parent"
-                           android:src="@drawable/tableicon"
-                           android:scaleType="fitXY"
-                           android:layout_marginRight="8dp"
-                           android:layout_marginLeft="10dp"
-                           android:layout_weight="1"
-                />
-                <ImageView
-                        android:id="@+id/ivSofa"
-                          android:layout_width="0dp"
-                           android:layout_height="match_parent"
-                           android:src="@drawable/sofaicon"
-                           android:scaleType="fitXY"
-                           android:layout_marginRight="10dp"
-                           android:layout_weight="1"/>
+
+        <LinearLayout  android:layout_width="match_parent"
+                       android:layout_height="0dp"
+                       android:orientation="vertical"
+                       android:layout_weight="1"
+                       android:weightSum="2">
+
+            <LinearLayout  android:layout_width="match_parent"
+                           android:layout_height="0dp"
+                           android:orientation="horizontal"
+                           android:gravity="center_horizontal"
+                           android:layout_marginBottom="10dp"
+                           android:layout_marginTop="10dp"
+                           android:layout_weight="1">
+
+                <ImageView  android:id="@+id/ivTables"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/tableicon"
+                            android:scaleType="fitXY"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"/>
+
+                <ImageView  android:id="@+id/ivSofa"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/sofaicon"
+                            android:scaleType="fitXY"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"/>
+
             </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="0dp"
                           android:orientation="horizontal"
                           android:gravity="center_horizontal"
-                          android:layout_weight="1"
-            >
-                <ImageView
-                         android:id="@+id/ivChairs"
-                        android:layout_width="140dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/chairsicon"
-                        android:scaleType="fitXY"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
-                />
-                <ImageView
-                        android:id="@+id/ivCupbords"
-                        android:layout_width="140dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/cupboardicon"
-                        android:scaleType="fitXY"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                />
+                          android:layout_weight="1">
+
+                <ImageView  android:id="@+id/ivChairs"
+                            android:layout_width="140dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/chairsicon"
+                            android:scaleType="fitXY"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"/>
+
+                <ImageView  android:id="@+id/ivCupbords"
+                            android:layout_width="140dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/cupboardicon"
+                            android:scaleType="fitXY"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"/>
+
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

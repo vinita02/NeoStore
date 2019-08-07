@@ -2,26 +2,30 @@ package com.example.neostore.activity.my_cart
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.neostore.AccessToken
 import com.example.neostore.R
-import com.example.neostore.activity.edit_profile.EditViewModel
-import com.example.neostore.activity.my_account.MyAccountResponse
+import com.example.neostore.activity.address.AddressActivity
 import com.example.neostore.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_my_cart.*
 import kotlinx.android.synthetic.main.activity_my_cart.recyclerView
-import kotlinx.android.synthetic.main.activity_product_details.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class MyCartActivity : BaseActivity(){
@@ -29,6 +33,9 @@ class MyCartActivity : BaseActivity(){
     lateinit var viewModel: CartViewModel
     val sharedPrefFile = "kotlinsharedpreference"
     lateinit var myAdapter: CartAdapter
+    lateinit var deletIcon:Drawable
+
+    private var swipeBackground:ColorDrawable = ColorDrawable(Color.parseColor("#FF0000"))
 
     override fun getLayout(): Int {
         return R.layout.activity_my_cart
@@ -37,12 +44,13 @@ class MyCartActivity : BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_cart)
+
         setToolbar("My Cart")
-        // Use For Back Buton
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+
         // This line use for to hid menu button from activity
         ivMenu.setVisibility(View.GONE)
+
+        deletIcon = ContextCompat.getDrawable(this,R.drawable.ic_delete_black_24dp)!!
 
         viewModel = ViewModelProviders.of(this).get(CartViewModel::class.java)
 
@@ -61,6 +69,79 @@ class MyCartActivity : BaseActivity(){
                 show("Error")
             }
         })
+
+        btnOrderNow.setOnClickListener {
+            val intent = Intent(this@MyCartActivity,AddressActivity::class.java)
+            startActivity(intent)
+        }
+        enableSwipe()
+
+    }
+
+    fun enableSwipe(){
+
+        val itemTouchHelperCallback = object :ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT)
+        {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, position : Int) {
+                myAdapter.removeItem(viewHolder)
+
+            }
+
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                val itemView = viewHolder.itemView
+
+                val iconMargin = (itemView.height - deletIcon.intrinsicHeight)/2
+                if(dX > 0){
+                    swipeBackground.setBounds(itemView.left,itemView.top,dX.toInt(),itemView.bottom)
+                    deletIcon.setBounds(itemView.left+iconMargin,itemView.top+iconMargin,
+                        itemView.left+iconMargin+deletIcon.intrinsicWidth,
+                        itemView.bottom-iconMargin)
+
+                }else{
+
+                    swipeBackground.setBounds(itemView.right+dX.toInt(),itemView.top,itemView.right,itemView.bottom)
+                    deletIcon.setBounds(itemView.right-iconMargin-deletIcon.intrinsicWidth,
+                        itemView.top+iconMargin,itemView.right-iconMargin,
+                        itemView.bottom-iconMargin)
+                }
+                      swipeBackground.draw(c)
+
+                c.save()
+
+                if(dX > 0){
+                    c.clipRect(itemView.left,itemView.top,dX.toInt(),itemView.bottom)
+
+                }else
+                {
+                   c.clipRect(itemView.right+dX.toInt(),itemView.top,itemView.right,itemView.bottom)
+                }
+
+                c.restore()
+
+                deletIcon.draw(c)
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+
+
     }
 
     @SuppressLint("WrongConstant")
@@ -91,7 +172,6 @@ class MyCartActivity : BaseActivity(){
         }
         return super.onContextItemSelected(item)
     }
-
 
 
 }

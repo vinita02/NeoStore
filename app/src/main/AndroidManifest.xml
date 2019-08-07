@@ -13,6 +13,14 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
+        <activity android:name=".activity.order_details.OrderDetailsActivity">
+        </activity>
+        <activity android:name=".activity.orderlist.My_OrderActivity">
+        </activity>
+        <activity android:name=".activity.address_list.AddressListActivity">
+        </activity>
+        <activity android:name=".activity.address.AddressActivity">
+        </activity>
         <activity android:name=".activity.my_cart.MyCartActivity">
         </activity>
         <activity android:name=".activity.reset_password.ChangePasswordActivity">
@@ -20,10 +28,6 @@
         <activity android:name=".activity.edit_profile.EditProfileActivity">
         </activity>
         <activity android:name=".activity.my_account.FetchAccountDetailsActivity">
-        </activity>
-        <activity android:name=".ProductRatingActivity">
-        </activity>
-        <activity android:name=".activity.mycart.My_Cart_Activity">
         </activity>
         <activity android:name=".activity.product_detail.ProductDetailsActivity">
         </activity>

@@ -32,23 +32,14 @@ class ProductDetailsAdapter:RecyclerView.Adapter<ProductDetailsAdapter.ViewHolde
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.imageView.setOnClickListener {
-
             listener?.onClicked(position)
         }
         Picasso.get().load(data!!.get(position)?.image!!).into(holder.imageView)
-
-     /*  holder.linearLayout.setOnClickListener {
-           data!!.get(position).id
-           val intent = Intent(context, RatingDialogFragment::class.java)
-           intent.putExtra("id_value", data!!.get(position).id)
-           context?.startActivity(intent)
-       }*/
     }
 
     class ViewHolder (itemView:View):RecyclerView.ViewHolder(itemView){
 
          val imageView = itemView.findViewById<ImageView>(R.id.imageView)
-//val linearLayout = itemView.findViewById<LinearLayout>(R.id.lLayout)
     }
     interface onItemClick{
 

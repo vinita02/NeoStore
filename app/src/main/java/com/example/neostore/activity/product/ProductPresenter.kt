@@ -12,7 +12,6 @@ import io.reactivex.schedulers.Schedulers
 class ProductPresenter(view: ProductContract.View, context: Context):
     ProductContract.Presenter {
 
-
     var mView : ProductContract.View? = null
     var context: Context? = null
 
@@ -21,7 +20,6 @@ class ProductPresenter(view: ProductContract.View, context: Context):
         this.context = context
     }
 
-
     override fun productList(product_category_id: String, limit: String, page: String) {
 
         val apiClient =  ApiManger.create().productList(product_category_id,limit,page)
@@ -29,10 +27,8 @@ class ProductPresenter(view: ProductContract.View, context: Context):
             .subscribeOn(Schedulers.io())
             .subscribeBy(
                 onNext = {
-
                     if (it != null) {
                    mView?.setAdapter(it)
-
                     }
                 },
                 onError = {
@@ -51,5 +47,4 @@ class ProductPresenter(view: ProductContract.View, context: Context):
 
     override fun onDestroy() {
     }
-
 }

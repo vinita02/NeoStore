@@ -33,36 +33,37 @@ class ProductListActivity : BaseActivity(), ProductContract.View {
 
     val presenter = ProductPresenter(this, this)
 
-
     override fun getProduct(message: String) {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setToolbar("Tables")
-        // Use For Back Buton
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
         // This line use for to hid menu button from activity
         ivMenu.setVisibility(View.GONE)
 
         presenter.productList(intent.extras?.get("product_id").toString(),"10","1")
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        when(intent.extras.get("product_id").toString()){
+            "1" -> setToolbar("Tables")
+            "2" -> setToolbar("Sofas")
+            "3" -> setToolbar("Chairs")
+            "4" -> setToolbar("Copboards")
+
+        }
+
     }
 
     override fun showError(message: String) {
     }
-
     override fun showLoading() {
     }
-
     override fun hideLoading() {
     }
-
     override fun logout() {
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
@@ -70,7 +71,6 @@ class ProductListActivity : BaseActivity(), ProductContract.View {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-
         when (item?.itemId) {
             R.id.chair -> {
                 Toast.makeText(this, "Item 1st selected", Toast.LENGTH_SHORT).show()

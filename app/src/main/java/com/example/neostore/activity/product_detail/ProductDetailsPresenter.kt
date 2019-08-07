@@ -83,11 +83,8 @@ ProductDetailsContract.Presenter{
 
     }
 
-
-
     override fun onStart() {
     }
-
     override fun onDestroy() {
     }
 }

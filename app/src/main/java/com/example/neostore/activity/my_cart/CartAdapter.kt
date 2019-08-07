@@ -13,10 +13,11 @@ import com.example.neostore.activity.product.model.ProductItem
 import com.squareup.picasso.Picasso
 
 
-class CartAdapter(data1: List<DataX>, context: Context) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
+class CartAdapter(data1: ArrayList<DataX>, context: Context) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
-    private var data: List<DataX>? = data1
+    var data: ArrayList<DataX>? = data1
     private var context:Context? = context
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.cart_list,parent,false)
@@ -33,6 +34,13 @@ class CartAdapter(data1: List<DataX>, context: Context) : RecyclerView.Adapter<C
         holder.category.text = data!!.get(position).product.productCategory
         holder.textViewPrice.text = data!!.get(position).product.cost.toString()
 
+    }
+
+
+    fun removeItem(holder:RecyclerView.ViewHolder){
+
+        data?.removeAt(holder.adapterPosition)
+        notifyItemRemoved(holder.adapterPosition)
     }
 
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
