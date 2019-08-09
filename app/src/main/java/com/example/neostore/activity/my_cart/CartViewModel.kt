@@ -30,4 +30,26 @@ class CartViewModel:ViewModel() {
                 }
             )
     }
+
+    val cartDeletitem : MutableLiveData<DeleteCartResponse> = MutableLiveData()
+    fun cartDeletitemResponse() : MutableLiveData<DeleteCartResponse> = cartDeletitem
+
+    fun deleteDetail(access_token: String,product_id:String){
+        val apiClient = ApiManger.create().deleteCartDetail(access_token,product_id)
+        apiClient.observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribeBy (
+                onNext = {
+                    if(it != null){
+                        cartDeletitem.postValue(it)
+                    }
+                },
+                onError = {
+                    cartDeletitem.postValue(null)
+                },
+                onComplete = {
+
+                })
+
+    }
 }

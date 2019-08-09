@@ -8,6 +8,7 @@ import com.example.neostore.activity.my_account.MyAccountResponse
 import com.example.neostore.activity.product_detail.RatingResponse
 import com.example.neostore.activity.product_detail.SingleDataItem
 import com.example.neostore.activity.login.model.LoginRes
+import com.example.neostore.activity.my_cart.DeleteCartResponse
 import com.example.neostore.activity.order_details.OrderDetailsResponse
 import com.example.neostore.activity.orderlist.OrderlistResponse
 import com.example.neostore.activity.product.model.ProductResponse
@@ -114,4 +115,11 @@ interface Api {
         @Header("access_token")access_token: String,
         @Query("order_id")order_id:String
     ):Observable<OrderDetailsResponse>
+
+    @FormUrlEncoded
+    @POST(value = "api/deleteCart")
+    fun deleteCartDetail(
+        @Header("access_token")access_token: String,
+        @Field("product_id")product_id: String
+    ):Observable<DeleteCartResponse>
 }

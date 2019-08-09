@@ -30,16 +30,22 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class MyCartActivity : BaseActivity(){
 
+
     lateinit var viewModel: CartViewModel
     val sharedPrefFile = "kotlinsharedpreference"
     lateinit var myAdapter: CartAdapter
     lateinit var deletIcon:Drawable
+    lateinit  var product_id : String
+    lateinit var access_token:String
+    lateinit var adapter: CartAdapter
+
 
     private var swipeBackground:ColorDrawable = ColorDrawable(Color.parseColor("#FF0000"))
 
     override fun getLayout(): Int {
         return R.layout.activity_my_cart
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,6 +97,30 @@ class MyCartActivity : BaseActivity(){
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, position : Int) {
+
+
+
+                val sharedPreferences: SharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+                access_token = sharedPreferences.getString(AccessToken,"")
+
+               // viewModel.deleteDetail(access_token,myAdapter.data!!.get(position).productId.toString())
+
+               // viewModel.deleteDetail(access_token,myAdapter.data!![viewHolder.adapterPosition].productId.toString())
+                viewModel.deleteDetail(access_token,myAdapter.data?.get(viewHolder.adapterPosition)?.productId.toString())
+
+                viewModel.cartDeletitemResponse().observe(this@MyCartActivity,Observer<DeleteCartResponse>{
+                    if(it!=null)
+                    {
+                        show("Delete item")
+                        //setAdapter(it)
+                        //getCartDetail(it)
+                    }
+                    else
+                    {
+                        show("Error")
+                    }
+                })
+
                 myAdapter.removeItem(viewHolder)
 
             }
@@ -149,6 +179,7 @@ class MyCartActivity : BaseActivity(){
         myAdapter = CartAdapter(resCart.data,this)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
         recyclerView.adapter = myAdapter
+
     }
 
     fun getCartDetail(response:CartResponse){

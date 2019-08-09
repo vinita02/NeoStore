@@ -11,17 +11,21 @@ import android.view.View
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.neostore.AccessToken
 import com.example.neostore.R
 import com.example.neostore.base.BaseActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_product_details.*
+import kotlinx.android.synthetic.main.activity_product_details.imageView
+import kotlinx.android.synthetic.main.list_item.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, ProductDetailsAdapter.onItemClick,
     RatingDialogFragment.ExampleDialogListener,ProductDialogFragment.ExampleListener
 {
+
     override fun enterQuntity(access_token: String, product_id: String, quantity: String) {
         presenter.setQuantity(access_token,product_id,quantity)
     }
@@ -61,7 +65,6 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
     var costs:TextView? = null
     lateinit  var product_id : String
     lateinit var token:String
-  //  lateinit var Title:String
 
     val sharedPrefFile = "kotlinsharedpreference"
 
@@ -90,6 +93,7 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
     }
 
     override fun onClicked(position: Int) {
+
         Picasso.get().load(list?.get(position)?.image).into(imageView)
     }
 
@@ -97,6 +101,7 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
         list = productImages;
          Picasso.get().load(productImages.get(0).image).into(imageView)
         Pimage = productImages.get(0).image
+
     }
 
     override fun setAdapter(data1: List<ProductImage>) {
@@ -116,6 +121,8 @@ class ProductDetailsActivity : BaseActivity(), ProductDetailsContract.View, Prod
         ratings = findViewById(R.id.ratBar)
         descriptions = findViewById(R.id.tvDescrib)
         costs = findViewById(R.id.tvPrice)
+
+       //imageView1.setBackgroundResource(R.drawable.color)
 
         val sharedPreferences: SharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
          token = sharedPreferences.getString(AccessToken,"")

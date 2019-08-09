@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.neostore.R
 import com.example.neostore.activity.product.model.ProductItem
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.cart_list.view.*
 
 
 class CartAdapter(data1: ArrayList<DataX>, context: Context) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
@@ -33,7 +34,6 @@ class CartAdapter(data1: ArrayList<DataX>, context: Context) : RecyclerView.Adap
         holder.textViewTitle.text = data!!.get(position).product.name
         holder.category.text = data!!.get(position).product.productCategory
         holder.textViewPrice.text = data!!.get(position).product.cost.toString()
-
     }
 
 
